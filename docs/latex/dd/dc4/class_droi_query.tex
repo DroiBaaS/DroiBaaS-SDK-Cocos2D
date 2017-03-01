@@ -1,0 +1,379 @@
+\hypertarget{class_droi_query}{}\section{Droi\+Query Class Reference}
+\label{class_droi_query}\index{Droi\+Query@{Droi\+Query}}
+
+
+{\ttfamily \#include $<$Droi\+Query.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_query_ab66d0b568d69f579e4fdf9ac77d6c6b4}{run} ()
+\item 
+void \hyperlink{class_droi_query_a853e3dc36ab0918847a5279b0989c7ab}{run\+In\+Background} (\hyperlink{struct_droi_callback}{Droi\+Callback}$<$ \hyperlink{class_droi_error}{Droi\+Error} $>$\+::on\+Callback callback)
+\item 
+\hyperlink{class_ref_vector}{Ref\+Vector} $\ast$ \hyperlink{class_droi_query_ac858282a8efa4e45a7cd06ea2f2c55cb}{run\+Query} (\hyperlink{class_droi_error}{Droi\+Error} $\ast$error)
+\item 
+void \hyperlink{class_droi_query_a2d0790ef682bcf456773e848c0661fac}{run\+Query\+In\+Background} (\hyperlink{struct_droi_callback}{Droi\+Callback}$<$ \hyperlink{class_ref_vector}{Ref\+Vector} $\ast$$>$\+::on\+Callback2 callback)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_a73a7402ccf8fd761313c38e45890aa25}{query\+Data} (const std\+::string \&table\+Name)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_af7084bfa46a759fd3da97e039c478c75}{delete\+Data} (const std\+::string \&table\+Name, \hyperlink{class_droi_object}{Droi\+Object} \&obj)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_afdc95a33d53f45202117d308a0c41b46}{update\+Data} (const std\+::string \&table\+Name)
+\item 
+\mbox{\Hypertarget{class_droi_query_a736c35754ac6eda5c34eace2a6c4ac75}\label{class_droi_query_a736c35754ac6eda5c34eace2a6c4ac75}} 
+\hyperlink{class_droi_query}{Droi\+Query} \& {\bfseries update\+Object} (const std\+::string \&table\+Name, \hyperlink{class_droi_object}{Droi\+Object} \&obj)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_a8a5dbfc1165c6794180bbe45e0ede93d}{count\+Data} (const std\+::string \&table\+Name)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_a7a00f94da8d005eeb702cdb1dbabb452}{inc} (const std\+::string \&property\+Name)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_aded6970870832e609925139c4f61405e}{dec} (const std\+::string \&property\+Name)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_aaafee9ca08910f2ce683f1aed2d34b82}{set} (const std\+::string \&property\+Name, const cocos2d\+::\+Value \&value)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_ad58c1c5279ac424afc65fc0703be7f94}{where} (const std\+::string \&property\+Name, const std\+::string \&op\+Type, const cocos2d\+::\+Value \&arg2)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_aaa0f9b75d424ec0c8e0daf0aa994e375}{where} (\hyperlink{class_droi_condition}{Droi\+Condition} $\ast$cond)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_ad1e30a2f5bae1314db3b2b88f36b80f5}{order\+By} (const std\+::string \&property\+Name, bool ascending)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_aaaad33d51fe1b6d137fc18dd04c59df0}{limit} (int limit\+Size)
+\item 
+\hyperlink{class_droi_query}{Droi\+Query} \& \hyperlink{class_droi_query_a15a8a0951254209f32df45d1a2265915}{offset} (int position)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_droi_query_a90b3c86c630c1122274b58bc236d7879}\label{class_droi_query_a90b3c86c630c1122274b58bc236d7879}} 
+static \hyperlink{class_droi_query}{Droi\+Query} $\ast$ {\bfseries create} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_droi_query_aa9b1efa1913aafaffd56ef3341b6fba4}\label{class_droi_query_aa9b1efa1913aafaffd56ef3341b6fba4}} 
+static std\+::string {\bfseries S\+E\+L\+E\+CT} = \char`\"{}select\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_acbf403b1e859512847e20cdedee5327b}\label{class_droi_query_acbf403b1e859512847e20cdedee5327b}} 
+static std\+::string {\bfseries I\+N\+S\+E\+RT} = \char`\"{}insert\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_af686005b8a9e06be39b50564a5656e4b}\label{class_droi_query_af686005b8a9e06be39b50564a5656e4b}} 
+static std\+::string {\bfseries D\+E\+L\+E\+TE} = \char`\"{}delete\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_ab3e52ee42cacc1898d2dd67dcf44601a}\label{class_droi_query_ab3e52ee42cacc1898d2dd67dcf44601a}} 
+static std\+::string {\bfseries U\+P\+D\+A\+TE} = \char`\"{}update\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a4aba57a581d8c2a808ee9198511dd1b1}\label{class_droi_query_a4aba57a581d8c2a808ee9198511dd1b1}} 
+static std\+::string {\bfseries C\+O\+U\+NT} = \char`\"{}count\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a5ec47818f9a738c6765c2bd7803373ca}\label{class_droi_query_a5ec47818f9a738c6765c2bd7803373ca}} 
+static std\+::string {\bfseries U\+P\+D\+A\+T\+E\+\_\+\+D\+A\+TA} = \char`\"{}update\+Data\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a3da06d0419e09539fcc2621f1fe03e5b}\label{class_droi_query_a3da06d0419e09539fcc2621f1fe03e5b}} 
+static std\+::string {\bfseries W\+H\+E\+RE} = \char`\"{}where\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_ade8e8d0507072be7d5e7398476cd4470}\label{class_droi_query_ade8e8d0507072be7d5e7398476cd4470}} 
+static std\+::string {\bfseries C\+O\+ND} = \char`\"{}cond\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a56b85fac52fed556f1a53f4cd8dfafc9}\label{class_droi_query_a56b85fac52fed556f1a53f4cd8dfafc9}} 
+static std\+::string {\bfseries V\+A\+L\+U\+ES} = \char`\"{}values\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a904e58cb886bc7a27b5935e04cebd495}\label{class_droi_query_a904e58cb886bc7a27b5935e04cebd495}} 
+static std\+::string {\bfseries OR} = \char`\"{}or\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a0b83d423b39229ce0792c2272ba0fa0b}\label{class_droi_query_a0b83d423b39229ce0792c2272ba0fa0b}} 
+static std\+::string {\bfseries A\+ND} = \char`\"{}and\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a1791ebcb6d90a32372f08133b5a668f7}\label{class_droi_query_a1791ebcb6d90a32372f08133b5a668f7}} 
+static std\+::string {\bfseries I\+NC} = \char`\"{}inc\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_ac244f6b9f8138ba7ae59c86d37b773aa}\label{class_droi_query_ac244f6b9f8138ba7ae59c86d37b773aa}} 
+static std\+::string {\bfseries D\+EC} = \char`\"{}dec\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a9efe0041e2aaaafb07d47e43a0d94dcc}\label{class_droi_query_a9efe0041e2aaaafb07d47e43a0d94dcc}} 
+static std\+::string {\bfseries S\+ET} = \char`\"{}set\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a00030d9d83166b71f554528caf1b9d4f}\label{class_droi_query_a00030d9d83166b71f554528caf1b9d4f}} 
+static std\+::string {\bfseries O\+R\+D\+E\+R\+BY} = \char`\"{}orderby\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a448aea6b85da8af40143eada0c978074}\label{class_droi_query_a448aea6b85da8af40143eada0c978074}} 
+static std\+::string {\bfseries A\+SC} = \char`\"{}A\+SC\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a9dbbcb616b21d637d70e1050a97e4c98}\label{class_droi_query_a9dbbcb616b21d637d70e1050a97e4c98}} 
+static std\+::string {\bfseries D\+E\+SC} = \char`\"{}D\+E\+SC\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a82ee26e0d2631af95d0e1cc792486064}\label{class_droi_query_a82ee26e0d2631af95d0e1cc792486064}} 
+static std\+::string {\bfseries L\+I\+M\+IT} = \char`\"{}limit\char`\"{}
+\item 
+\mbox{\Hypertarget{class_droi_query_a8def8af0db9757542663298b25b06f7d}\label{class_droi_query_a8def8af0db9757542663298b25b06f7d}} 
+static std\+::string {\bfseries O\+F\+F\+S\+ET} = \char`\"{}offset\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_droi_query}{Droi\+Query} class defines a query that is used to query \hyperlink{class_droi_object}{Droi\+Object}. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_droi_query_a8a5dbfc1165c6794180bbe45e0ede93d}\label{class_droi_query_a8a5dbfc1165c6794180bbe45e0ede93d}} 
+\index{Droi\+Query@{Droi\+Query}!count\+Data@{count\+Data}}
+\index{count\+Data@{count\+Data}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{count\+Data()}{countData()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::count\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{table\+Name }\end{DoxyParamCaption})}
+
+Count query data from specific table 
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & Specify table name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_query_aded6970870832e609925139c4f61405e}\label{class_droi_query_aded6970870832e609925139c4f61405e}} 
+\index{Droi\+Query@{Droi\+Query}!dec@{dec}}
+\index{dec@{dec}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{dec()}{dec()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::dec (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property\+Name }\end{DoxyParamCaption})}
+
+Decrease data by specific key 
+\begin{DoxyParams}{Parameters}
+{\em property\+Name} & The specific key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_query_af7084bfa46a759fd3da97e039c478c75}\label{class_droi_query_af7084bfa46a759fd3da97e039c478c75}} 
+\index{Droi\+Query@{Droi\+Query}!delete\+Data@{delete\+Data}}
+\index{delete\+Data@{delete\+Data}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{delete\+Data()}{deleteData()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::delete\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{table\+Name,  }\item[{\hyperlink{class_droi_object}{Droi\+Object} \&}]{obj }\end{DoxyParamCaption})}
+
+Delete data from specific table 
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & Specify table name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+
+
+Referenced by Droi\+Object\+::delete\+From\+Stoage().
+
+\mbox{\Hypertarget{class_droi_query_a7a00f94da8d005eeb702cdb1dbabb452}\label{class_droi_query_a7a00f94da8d005eeb702cdb1dbabb452}} 
+\index{Droi\+Query@{Droi\+Query}!inc@{inc}}
+\index{inc@{inc}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{inc()}{inc()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::inc (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property\+Name }\end{DoxyParamCaption})}
+
+Increase data by specific key 
+\begin{DoxyParams}{Parameters}
+{\em property\+Name} & The specific key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_query_aaaad33d51fe1b6d137fc18dd04c59df0}\label{class_droi_query_aaaad33d51fe1b6d137fc18dd04c59df0}} 
+\index{Droi\+Query@{Droi\+Query}!limit@{limit}}
+\index{limit@{limit}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{limit()}{limit()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::limit (\begin{DoxyParamCaption}\item[{int}]{limit\+Size }\end{DoxyParamCaption})}
+
+Set the maximum number of query result 
+\begin{DoxyParams}{Parameters}
+{\em limit\+Size} & The maximum number of query result. Default number is 200 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_query_a15a8a0951254209f32df45d1a2265915}\label{class_droi_query_a15a8a0951254209f32df45d1a2265915}} 
+\index{Droi\+Query@{Droi\+Query}!offset@{offset}}
+\index{offset@{offset}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{offset()}{offset()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::offset (\begin{DoxyParamCaption}\item[{int}]{position }\end{DoxyParamCaption})}
+
+The query result starting at specific offset 
+\begin{DoxyParams}{Parameters}
+{\em position} & The specific offset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+
+
+References Droi\+Task\+Dispatcher\+::current\+Task\+Dispatcher(), Droi\+Task\+Dispatcher\+::enqueue\+Task(), and Droi\+Task\+Dispatcher\+::get\+Task\+Dispatcher().
+
+\mbox{\Hypertarget{class_droi_query_ad1e30a2f5bae1314db3b2b88f36b80f5}\label{class_droi_query_ad1e30a2f5bae1314db3b2b88f36b80f5}} 
+\index{Droi\+Query@{Droi\+Query}!order\+By@{order\+By}}
+\index{order\+By@{order\+By}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{order\+By()}{orderBy()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::order\+By (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property\+Name,  }\item[{bool}]{ascending }\end{DoxyParamCaption})}
+
+Sort the query result by given value 
+\begin{DoxyParams}{Parameters}
+{\em property\+Name} & The key name to sort \\
+\hline
+{\em ascending} & Determine whether the ascending sort \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_query_a73a7402ccf8fd761313c38e45890aa25}\label{class_droi_query_a73a7402ccf8fd761313c38e45890aa25}} 
+\index{Droi\+Query@{Droi\+Query}!query\+Data@{query\+Data}}
+\index{query\+Data@{query\+Data}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{query\+Data()}{queryData()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::query\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{table\+Name }\end{DoxyParamCaption})}
+
+Query data from specific table 
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & Specify table name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+
+
+Referenced by Droi\+User\+::refresh\+Validation\+Status().
+
+\mbox{\Hypertarget{class_droi_query_ab66d0b568d69f579e4fdf9ac77d6c6b4}\label{class_droi_query_ab66d0b568d69f579e4fdf9ac77d6c6b4}} 
+\index{Droi\+Query@{Droi\+Query}!run@{run}}
+\index{run@{run}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_error}{Droi\+Error} Droi\+Query\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Run \hyperlink{class_droi_query}{Droi\+Query} instruction \begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_error}{Droi\+Error} object. 
+\end{DoxyReturn}
+
+
+References run\+Query().
+
+
+
+Referenced by run\+In\+Background().
+
+\mbox{\Hypertarget{class_droi_query_a853e3dc36ab0918847a5279b0989c7ab}\label{class_droi_query_a853e3dc36ab0918847a5279b0989c7ab}} 
+\index{Droi\+Query@{Droi\+Query}!run\+In\+Background@{run\+In\+Background}}
+\index{run\+In\+Background@{run\+In\+Background}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{run\+In\+Background()}{runInBackground()}}
+{\footnotesize\ttfamily void Droi\+Query\+::run\+In\+Background (\begin{DoxyParamCaption}\item[{\hyperlink{struct_droi_callback}{Droi\+Callback}$<$ \hyperlink{class_droi_error}{Droi\+Error} $>$\+::on\+Callback}]{callback }\end{DoxyParamCaption})}
+
+Run \hyperlink{class_droi_query}{Droi\+Query} instruction in background thread 
+\begin{DoxyParams}{Parameters}
+{\em callback} & \hyperlink{class_droi_query}{Droi\+Query} would execute callback method after finishing \\
+\hline
+\end{DoxyParams}
+
+
+References Droi\+Task\+Dispatcher\+::current\+Task\+Dispatcher(), Droi\+Task\+Dispatcher\+::enqueue\+Task(), Droi\+Task\+Dispatcher\+::get\+Task\+Dispatcher(), and run().
+
+\mbox{\Hypertarget{class_droi_query_ac858282a8efa4e45a7cd06ea2f2c55cb}\label{class_droi_query_ac858282a8efa4e45a7cd06ea2f2c55cb}} 
+\index{Droi\+Query@{Droi\+Query}!run\+Query@{run\+Query}}
+\index{run\+Query@{run\+Query}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{run\+Query()}{runQuery()}}
+{\footnotesize\ttfamily \hyperlink{class_ref_vector}{Ref\+Vector} $\ast$ Droi\+Query\+::run\+Query (\begin{DoxyParamCaption}\item[{\hyperlink{class_droi_error}{Droi\+Error} $\ast$}]{error }\end{DoxyParamCaption})}
+
+Run \hyperlink{class_droi_query}{Droi\+Query} to query data 
+\begin{DoxyParams}{Parameters}
+{\em error} & A pointer to \hyperlink{class_droi_error}{Droi\+Error} object. You may specify nullptr for this parameter if you do not want the error information. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Query results. 
+\end{DoxyReturn}
+
+
+Referenced by Droi\+Object\+::delete\+From\+Stoage(), Droi\+User\+::refresh\+Validation\+Status(), run(), run\+Query\+In\+Background(), and Droi\+Object\+::save().
+
+\mbox{\Hypertarget{class_droi_query_a2d0790ef682bcf456773e848c0661fac}\label{class_droi_query_a2d0790ef682bcf456773e848c0661fac}} 
+\index{Droi\+Query@{Droi\+Query}!run\+Query\+In\+Background@{run\+Query\+In\+Background}}
+\index{run\+Query\+In\+Background@{run\+Query\+In\+Background}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{run\+Query\+In\+Background()}{runQueryInBackground()}}
+{\footnotesize\ttfamily void Droi\+Query\+::run\+Query\+In\+Background (\begin{DoxyParamCaption}\item[{\hyperlink{struct_droi_callback}{Droi\+Callback}$<$ \hyperlink{class_ref_vector}{Ref\+Vector} $\ast$$>$\+::on\+Callback2}]{callback }\end{DoxyParamCaption})}
+
+Run \hyperlink{class_droi_query}{Droi\+Query} to query data in background thread 
+\begin{DoxyParams}{Parameters}
+{\em callback} & \hyperlink{class_droi_query}{Droi\+Query} would execute callback method after finishing \\
+\hline
+\end{DoxyParams}
+
+
+References Droi\+Task\+Dispatcher\+::current\+Task\+Dispatcher(), Droi\+Task\+Dispatcher\+::enqueue\+Task(), Droi\+Task\+Dispatcher\+::get\+Task\+Dispatcher(), and run\+Query().
+
+\mbox{\Hypertarget{class_droi_query_aaafee9ca08910f2ce683f1aed2d34b82}\label{class_droi_query_aaafee9ca08910f2ce683f1aed2d34b82}} 
+\index{Droi\+Query@{Droi\+Query}!set@{set}}
+\index{set@{set}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::set (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property\+Name,  }\item[{const cocos2d\+::\+Value \&}]{value }\end{DoxyParamCaption})}
+
+Set specific key data to value 
+\begin{DoxyParams}{Parameters}
+{\em property\+Name} & The specific key \\
+\hline
+{\em value} & The update data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_query_afdc95a33d53f45202117d308a0c41b46}\label{class_droi_query_afdc95a33d53f45202117d308a0c41b46}} 
+\index{Droi\+Query@{Droi\+Query}!update\+Data@{update\+Data}}
+\index{update\+Data@{update\+Data}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{update\+Data()}{updateData()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::update\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{table\+Name }\end{DoxyParamCaption})}
+
+Update data from specific table 
+\begin{DoxyParams}{Parameters}
+{\em table\+Name} & Specify table name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_query_ad58c1c5279ac424afc65fc0703be7f94}\label{class_droi_query_ad58c1c5279ac424afc65fc0703be7f94}} 
+\index{Droi\+Query@{Droi\+Query}!where@{where}}
+\index{where@{where}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{where()}{where()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::where (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property\+Name,  }\item[{const std\+::string \&}]{op\+Type,  }\item[{const cocos2d\+::\+Value \&}]{arg2 }\end{DoxyParamCaption})}
+
+Add condition for query 
+\begin{DoxyParams}{Parameters}
+{\em property\+Name} & The key of condition to check \\
+\hline
+{\em op\+Type} & The condition type. \\
+\hline
+{\em arg2} & The value is for checking \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+
+
+Referenced by Droi\+User\+::refresh\+Validation\+Status().
+
+\mbox{\Hypertarget{class_droi_query_aaa0f9b75d424ec0c8e0daf0aa994e375}\label{class_droi_query_aaa0f9b75d424ec0c8e0daf0aa994e375}} 
+\index{Droi\+Query@{Droi\+Query}!where@{where}}
+\index{where@{where}!Droi\+Query@{Droi\+Query}}
+\subsubsection{\texorpdfstring{where()}{where()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{class_droi_query}{Droi\+Query} \& Droi\+Query\+::where (\begin{DoxyParamCaption}\item[{\hyperlink{class_droi_condition}{Droi\+Condition} $\ast$}]{cond }\end{DoxyParamCaption})}
+
+Add condition for query 
+\begin{DoxyParams}{Parameters}
+{\em cond} & A Droi\+Condtion. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_query}{Droi\+Query} instance 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Droi\+Query.\+h\item 
+Droi\+Query.\+cpp\end{DoxyCompactItemize}

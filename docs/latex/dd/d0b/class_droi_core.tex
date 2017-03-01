@@ -1,0 +1,84 @@
+\hypertarget{class_droi_core}{}\section{Droi\+Core Class Reference}
+\label{class_droi_core}\index{Droi\+Core@{Droi\+Core}}
+
+
+{\ttfamily \#include $<$Droi\+Core.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const std\+::string \hyperlink{class_droi_core_a81799368ed96e352f0f0e30dcc7606ae}{get\+Device\+Id} ()
+\item 
+static const std\+::string \hyperlink{class_droi_core_a9e6d6c3a1be97c6363dbce823d901169}{get\+Installation\+Id} ()
+\item 
+static const std\+::string \hyperlink{class_droi_core_ae0b543bd0feb2860829cf1b6387f0bf5}{get\+App\+Id} ()
+\item 
+static void \hyperlink{class_droi_core_a0e6c7e11c6c4985dfc472aa1f29fa9cd}{initialize\+Core} (const std\+::string \&application\+Id)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_droi_core_ad04cb70e678402e663c95435df2a194e}\label{class_droi_core_ad04cb70e678402e663c95435df2a194e}} 
+class {\bfseries Droi\+Http}
+\item 
+\mbox{\Hypertarget{class_droi_core_a2a114914a3ccd688261064727ebe71cd}\label{class_droi_core_a2a114914a3ccd688261064727ebe71cd}} 
+class {\bfseries Droi\+Remote\+Service\+Helper}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Doire\+Core provides methods to get Droi App\+Id, Platform Id and Installation Id information. Developer should use initialize\+Core to setup Droi Core S\+DK environment. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_droi_core_ae0b543bd0feb2860829cf1b6387f0bf5}\label{class_droi_core_ae0b543bd0feb2860829cf1b6387f0bf5}} 
+\index{Droi\+Core@{Droi\+Core}!get\+App\+Id@{get\+App\+Id}}
+\index{get\+App\+Id@{get\+App\+Id}!Droi\+Core@{Droi\+Core}}
+\subsubsection{\texorpdfstring{get\+App\+Id()}{getAppId()}}
+{\footnotesize\ttfamily const std\+::string Droi\+Core\+::get\+App\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get application identifier \begin{DoxyReturn}{Returns}
+The application identifier 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_core_a81799368ed96e352f0f0e30dcc7606ae}\label{class_droi_core_a81799368ed96e352f0f0e30dcc7606ae}} 
+\index{Droi\+Core@{Droi\+Core}!get\+Device\+Id@{get\+Device\+Id}}
+\index{get\+Device\+Id@{get\+Device\+Id}!Droi\+Core@{Droi\+Core}}
+\subsubsection{\texorpdfstring{get\+Device\+Id()}{getDeviceId()}}
+{\footnotesize\ttfamily const std\+::string Droi\+Core\+::get\+Device\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get device identifier \begin{DoxyReturn}{Returns}
+The device identifier 
+\end{DoxyReturn}
+
+
+Referenced by Droi\+User\+::login\+With\+Anonymous(), and Droi\+User\+::signup().
+
+\mbox{\Hypertarget{class_droi_core_a9e6d6c3a1be97c6363dbce823d901169}\label{class_droi_core_a9e6d6c3a1be97c6363dbce823d901169}} 
+\index{Droi\+Core@{Droi\+Core}!get\+Installation\+Id@{get\+Installation\+Id}}
+\index{get\+Installation\+Id@{get\+Installation\+Id}!Droi\+Core@{Droi\+Core}}
+\subsubsection{\texorpdfstring{get\+Installation\+Id()}{getInstallationId()}}
+{\footnotesize\ttfamily const std\+::string Droi\+Core\+::get\+Installation\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get installation identifier \begin{DoxyReturn}{Returns}
+The installation identifier 
+\end{DoxyReturn}
+
+
+Referenced by Droi\+User\+::login(), Droi\+User\+::login\+With\+Anonymous(), and Droi\+User\+::signup().
+
+\mbox{\Hypertarget{class_droi_core_a0e6c7e11c6c4985dfc472aa1f29fa9cd}\label{class_droi_core_a0e6c7e11c6c4985dfc472aa1f29fa9cd}} 
+\index{Droi\+Core@{Droi\+Core}!initialize\+Core@{initialize\+Core}}
+\index{initialize\+Core@{initialize\+Core}!Droi\+Core@{Droi\+Core}}
+\subsubsection{\texorpdfstring{initialize\+Core()}{initializeCore()}}
+{\footnotesize\ttfamily void Droi\+Core\+::initialize\+Core (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{application\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Initiate Droi Core S\+DK 
+\begin{DoxyParams}{Parameters}
+{\em application\+Id} & The application identifie \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Droi\+Core.\+h\item 
+Droi\+Core.\+cpp\end{DoxyCompactItemize}

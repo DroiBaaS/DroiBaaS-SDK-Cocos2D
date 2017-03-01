@@ -1,0 +1,178 @@
+\hypertarget{class_droi_permission}{}\section{Droi\+Permission Class Reference}
+\label{class_droi_permission}\index{Droi\+Permission@{Droi\+Permission}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_droi_permission_ad80e955e6343a75f2044e8c9077a99e0}{Droi\+Permission} ()
+\item 
+\hyperlink{class_droi_permission_abe688f88339b09bd55b114ab3aab552a}{$\sim$\+Droi\+Permission} ()
+\item 
+void \hyperlink{class_droi_permission_a8843fc5d39dcb65a883f92437f433d8e}{set\+User\+Write\+Permission} (const char $\ast$user\+Id, bool grant\+Permission)
+\item 
+void \hyperlink{class_droi_permission_ac4544f1c4a9ce40e2c59be14e46ab7cf}{set\+User\+Read\+Permission} (const char $\ast$user\+Id, bool grant\+Permission)
+\item 
+void \hyperlink{class_droi_permission_abc786ec4b686910c88ef997f1274b450}{set\+Public\+Write\+Permission} (bool grant\+Permission)
+\item 
+void \hyperlink{class_droi_permission_aa0e05d977d1c3778f26ec65133a3591e}{set\+Public\+Read\+Permission} (bool grant\+Permission)
+\item 
+void \hyperlink{class_droi_permission_a5f8732404c7f3b227179cbcf8467b2c2}{apply\+J\+S\+O\+N\+Object} (\hyperlink{structc_j_s_o_n}{c\+J\+S\+ON} $\ast$json)
+\item 
+\hyperlink{structc_j_s_o_n}{c\+J\+S\+ON} $\ast$ \hyperlink{class_droi_permission_a3db387c0552fe5d24353027a3868159f}{to\+J\+S\+O\+N\+Object} ()
+\item 
+\hyperlink{class_droi_permission}{Droi\+Permission} $\ast$ \hyperlink{class_droi_permission_afff19c97fc9047613a7f44425b9d6041}{clone} ()
+\item 
+\mbox{\Hypertarget{class_droi_permission_a0dd22b01fcdf4b0fa3c488d4b504c29b}\label{class_droi_permission_a0dd22b01fcdf4b0fa3c488d4b504c29b}} 
+\hyperlink{class_droi_permission}{Droi\+Permission} \& {\bfseries operator=} (\hyperlink{class_droi_permission}{Droi\+Permission} \&o)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_droi_permission}{Droi\+Permission} $\ast$ \hyperlink{class_droi_permission_a9294ad873ad22e9acf740ffcccb0c674}{get\+Default\+Permission} ()
+\item 
+static void \hyperlink{class_droi_permission_aca711a9a8271b21150e97e75bddd9dbe}{set\+Default\+Permission} (\hyperlink{class_droi_permission}{Droi\+Permission} $\ast$permission)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_droi_permission_ad80e955e6343a75f2044e8c9077a99e0}\label{class_droi_permission_ad80e955e6343a75f2044e8c9077a99e0}} 
+\index{Droi\+Permission@{Droi\+Permission}!Droi\+Permission@{Droi\+Permission}}
+\index{Droi\+Permission@{Droi\+Permission}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{Droi\+Permission()}{DroiPermission()}}
+{\footnotesize\ttfamily Droi\+Permission\+::\+Droi\+Permission (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor \mbox{\Hypertarget{class_droi_permission_abe688f88339b09bd55b114ab3aab552a}\label{class_droi_permission_abe688f88339b09bd55b114ab3aab552a}} 
+\index{Droi\+Permission@{Droi\+Permission}!````~Droi\+Permission@{$\sim$\+Droi\+Permission}}
+\index{````~Droi\+Permission@{$\sim$\+Droi\+Permission}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{$\sim$\+Droi\+Permission()}{~DroiPermission()}}
+{\footnotesize\ttfamily Droi\+Permission\+::$\sim$\+Droi\+Permission (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_droi_permission_a5f8732404c7f3b227179cbcf8467b2c2}\label{class_droi_permission_a5f8732404c7f3b227179cbcf8467b2c2}} 
+\index{Droi\+Permission@{Droi\+Permission}!apply\+J\+S\+O\+N\+Object@{apply\+J\+S\+O\+N\+Object}}
+\index{apply\+J\+S\+O\+N\+Object@{apply\+J\+S\+O\+N\+Object}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{apply\+J\+S\+O\+N\+Object()}{applyJSONObject()}}
+{\footnotesize\ttfamily void Droi\+Permission\+::apply\+J\+S\+O\+N\+Object (\begin{DoxyParamCaption}\item[{\hyperlink{structc_j_s_o_n}{c\+J\+S\+ON} $\ast$}]{json }\end{DoxyParamCaption})}
+
+Set group write permission. 
+\begin{DoxyParams}{Parameters}
+{\em group\+Id} & Group ID \\
+\hline
+{\em grant\+Permission} & true to enable read, false to disable. Set group read permission. \\
+\hline
+{\em group\+Id} & Group ID \\
+\hline
+{\em grant\+Permission} & true to enable read, false to disable. Deserialize from \hyperlink{structc_j_s_o_n}{c\+J\+S\+ON} object. \\
+\hline
+{\em json} & J\+S\+ON object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_permission_afff19c97fc9047613a7f44425b9d6041}\label{class_droi_permission_afff19c97fc9047613a7f44425b9d6041}} 
+\index{Droi\+Permission@{Droi\+Permission}!clone@{clone}}
+\index{clone@{clone}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_permission}{Droi\+Permission} $\ast$ Droi\+Permission\+::clone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Clone current object \begin{DoxyReturn}{Returns}
+The clone object 
+\end{DoxyReturn}
+
+
+Referenced by Droi\+Object\+::set\+Permission().
+
+\mbox{\Hypertarget{class_droi_permission_a9294ad873ad22e9acf740ffcccb0c674}\label{class_droi_permission_a9294ad873ad22e9acf740ffcccb0c674}} 
+\index{Droi\+Permission@{Droi\+Permission}!get\+Default\+Permission@{get\+Default\+Permission}}
+\index{get\+Default\+Permission@{get\+Default\+Permission}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{get\+Default\+Permission()}{getDefaultPermission()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_permission}{Droi\+Permission} $\ast$ Droi\+Permission\+::get\+Default\+Permission (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get default permission. Will assign to default \hyperlink{class_droi_object}{Droi\+Object} data if not assigned in \hyperlink{class_droi_object}{Droi\+Object}. \begin{DoxyReturn}{Returns}
+Permission 
+\end{DoxyReturn}
+
+
+Referenced by Droi\+Object\+::get\+Permission\+With\+Default(), and Droi\+User\+::login\+With\+Anonymous().
+
+\mbox{\Hypertarget{class_droi_permission_aca711a9a8271b21150e97e75bddd9dbe}\label{class_droi_permission_aca711a9a8271b21150e97e75bddd9dbe}} 
+\index{Droi\+Permission@{Droi\+Permission}!set\+Default\+Permission@{set\+Default\+Permission}}
+\index{set\+Default\+Permission@{set\+Default\+Permission}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{set\+Default\+Permission()}{setDefaultPermission()}}
+{\footnotesize\ttfamily void Droi\+Permission\+::set\+Default\+Permission (\begin{DoxyParamCaption}\item[{\hyperlink{class_droi_permission}{Droi\+Permission} $\ast$}]{permission }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Set default permission. Assign to \hyperlink{class_droi_object}{Droi\+Object} data if not assigned in \hyperlink{class_droi_object}{Droi\+Object}. 
+\begin{DoxyParams}{Parameters}
+{\em permission} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_permission_aa0e05d977d1c3778f26ec65133a3591e}\label{class_droi_permission_aa0e05d977d1c3778f26ec65133a3591e}} 
+\index{Droi\+Permission@{Droi\+Permission}!set\+Public\+Read\+Permission@{set\+Public\+Read\+Permission}}
+\index{set\+Public\+Read\+Permission@{set\+Public\+Read\+Permission}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{set\+Public\+Read\+Permission()}{setPublicReadPermission()}}
+{\footnotesize\ttfamily void Droi\+Permission\+::set\+Public\+Read\+Permission (\begin{DoxyParamCaption}\item[{bool}]{grant\+Permission }\end{DoxyParamCaption})}
+
+Set public read permission. 
+\begin{DoxyParams}{Parameters}
+{\em grant\+Permission} & true to enable read, false to disable. \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by Droi\+User\+::login\+With\+Anonymous().
+
+\mbox{\Hypertarget{class_droi_permission_abc786ec4b686910c88ef997f1274b450}\label{class_droi_permission_abc786ec4b686910c88ef997f1274b450}} 
+\index{Droi\+Permission@{Droi\+Permission}!set\+Public\+Write\+Permission@{set\+Public\+Write\+Permission}}
+\index{set\+Public\+Write\+Permission@{set\+Public\+Write\+Permission}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{set\+Public\+Write\+Permission()}{setPublicWritePermission()}}
+{\footnotesize\ttfamily void Droi\+Permission\+::set\+Public\+Write\+Permission (\begin{DoxyParamCaption}\item[{bool}]{grant\+Permission }\end{DoxyParamCaption})}
+
+Set public write permission. 
+\begin{DoxyParams}{Parameters}
+{\em grant\+Permission} & true to enable read, false to disable. \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by Droi\+User\+::login\+With\+Anonymous().
+
+\mbox{\Hypertarget{class_droi_permission_ac4544f1c4a9ce40e2c59be14e46ab7cf}\label{class_droi_permission_ac4544f1c4a9ce40e2c59be14e46ab7cf}} 
+\index{Droi\+Permission@{Droi\+Permission}!set\+User\+Read\+Permission@{set\+User\+Read\+Permission}}
+\index{set\+User\+Read\+Permission@{set\+User\+Read\+Permission}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{set\+User\+Read\+Permission()}{setUserReadPermission()}}
+{\footnotesize\ttfamily void Droi\+Permission\+::set\+User\+Read\+Permission (\begin{DoxyParamCaption}\item[{const char $\ast$}]{user\+Id,  }\item[{bool}]{grant\+Permission }\end{DoxyParamCaption})}
+
+Set user read permission. 
+\begin{DoxyParams}{Parameters}
+{\em user\+Id} & User ID \\
+\hline
+{\em grant\+Permission} & true to enable read, false to disable. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_permission_a8843fc5d39dcb65a883f92437f433d8e}\label{class_droi_permission_a8843fc5d39dcb65a883f92437f433d8e}} 
+\index{Droi\+Permission@{Droi\+Permission}!set\+User\+Write\+Permission@{set\+User\+Write\+Permission}}
+\index{set\+User\+Write\+Permission@{set\+User\+Write\+Permission}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{set\+User\+Write\+Permission()}{setUserWritePermission()}}
+{\footnotesize\ttfamily void Droi\+Permission\+::set\+User\+Write\+Permission (\begin{DoxyParamCaption}\item[{const char $\ast$}]{user\+Id,  }\item[{bool}]{grant\+Permission }\end{DoxyParamCaption})}
+
+Set user write permission. 
+\begin{DoxyParams}{Parameters}
+{\em user\+Id} & User ID \\
+\hline
+{\em grant\+Permission} & true to enable read, false to disable. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_permission_a3db387c0552fe5d24353027a3868159f}\label{class_droi_permission_a3db387c0552fe5d24353027a3868159f}} 
+\index{Droi\+Permission@{Droi\+Permission}!to\+J\+S\+O\+N\+Object@{to\+J\+S\+O\+N\+Object}}
+\index{to\+J\+S\+O\+N\+Object@{to\+J\+S\+O\+N\+Object}!Droi\+Permission@{Droi\+Permission}}
+\subsubsection{\texorpdfstring{to\+J\+S\+O\+N\+Object()}{toJSONObject()}}
+{\footnotesize\ttfamily \hyperlink{structc_j_s_o_n}{c\+J\+S\+ON} $\ast$ Droi\+Permission\+::to\+J\+S\+O\+N\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Serialize to J\+S\+ON format. \begin{DoxyReturn}{Returns}
+\hyperlink{structc_j_s_o_n}{c\+J\+S\+ON} object 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Droi\+Permission.\+h\item 
+Droi\+Permission.\+cpp\end{DoxyCompactItemize}
