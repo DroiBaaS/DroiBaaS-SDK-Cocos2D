@@ -1,0 +1,434 @@
+\hypertarget{class_droi_user}{}\section{Droi\+User Class Reference}
+\label{class_droi_user}\index{Droi\+User@{Droi\+User}}
+Inheritance diagram for Droi\+User\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{db/d70/class_droi_user}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_user_a14a693a064e644ecda56e61f107315c9}{logout} ()
+\item 
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_user_ae26c7f0f576a663d3ce3c5bfc03a102b}{signup} ()
+\item 
+bool \hyperlink{class_droi_user_a3997fd724988f04f0ec7c346340e2ac5}{is\+Anonymouse\+User} ()
+\item 
+bool \hyperlink{class_droi_user_a28a2d6c0c0f07833da4584beb47ab01f}{is\+Logged\+In} ()
+\item 
+bool \hyperlink{class_droi_user_ae2f95d9b44530fe46358b8ac584d844f}{enabled} ()
+\item 
+void \hyperlink{class_droi_user_ad4142478f0499ff7eefbba8a7654efce}{set\+Enabled} (bool \hyperlink{class_droi_user_ae2f95d9b44530fe46358b8ac584d844f}{enabled})
+\item 
+std\+::string \hyperlink{class_droi_user_a95d13af36734958546e656b6f1f19ddd}{get\+User\+Id} ()
+\item 
+std\+::string \hyperlink{class_droi_user_a13d2714ae33f6064da1448736e78ea02}{get\+Email} ()
+\item 
+std\+::string \hyperlink{class_droi_user_a346b687624c9b1df80de63e39799e5d1}{get\+Phone\+Number} ()
+\item 
+std\+::string \hyperlink{class_droi_user_a08f406ceef3b33e5a8f8e37c60cdfde3}{get\+Session\+Token} ()
+\item 
+void \hyperlink{class_droi_user_a84f5d57a02e5c7c77ea534787653bbb9}{set\+User\+Id} (const std\+::string \&user\+Id)
+\item 
+void \hyperlink{class_droi_user_afdc2427b453225d6bc014a5a2bb69086}{set\+Password} (const std\+::string \&password)
+\item 
+void \hyperlink{class_droi_user_a20e7019a45e75a54fb117feacb000f33}{set\+Email} (const std\+::string \&email)
+\item 
+void \hyperlink{class_droi_user_a3b208995b25dc47e72d1fa25b5a0845c}{set\+Phone\+Number} (const std\+::string \&phone\+Number)
+\item 
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_user_a3bea249ce5f0c182784979297e36c492}{change\+Password} (const std\+::string \&old\+Password, const std\+::string new\+Password)
+\item 
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_user_a1c908092717de36c51b0561546fc76b1}{validate\+Email} ()
+\item 
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_user_a771f0ed19004d3565fdc6b7663d0a566}{validate\+Phone\+Number} ()
+\item 
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_user_a4a76d7e4ab2865f6ba2e01470091dca8}{confirm\+Phone\+Number\+Pin\+Code} (const std\+::string \&pin\+Code)
+\item 
+bool \hyperlink{class_droi_user_ae0b35cc0d9e35a415ce203d909857861}{refresh\+Validation\+Status} ()
+\item 
+bool \hyperlink{class_droi_user_a54b508fdf1684d5f143b7fa1884dc03c}{refresh\+Validation\+Status\+In\+Background} (\hyperlink{struct_droi_callback}{Droi\+Callback}$<$ Ref\+Ptr$<$ \hyperlink{class_droi_user}{Droi\+User} $>$$>$\+::on\+Callback2 callback)
+\item 
+bool \hyperlink{class_droi_user_aa45e722831198f051f635f8d9abe8da3}{is\+Email\+Verified} ()
+\item 
+bool \hyperlink{class_droi_user_a0d62ee68696b5e09200fcd4f8826bcb0}{is\+Phone\+Num\+Verified} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_droi_user}{Droi\+User} $\ast$ \hyperlink{class_droi_user_a74b3c07a144ae1c916c4d3636c5a4959}{create} ()
+\item 
+static \hyperlink{class_droi_user}{Droi\+User} $\ast$ \hyperlink{class_droi_user_a43acc04ec54f82a3bf2c0ea013245f82}{get\+Current\+User} ()
+\item 
+static Ref\+Ptr$<$ \hyperlink{class_droi_user}{Droi\+User} $>$ \hyperlink{class_droi_user_a673787980cbb072df89cdf72239e7984}{login} (const std\+::string \&user\+Id, const std\+::string \&password, \hyperlink{class_droi_error}{Droi\+Error} $\ast$error)
+\item 
+static Ref\+Ptr$<$ \hyperlink{class_droi_user}{Droi\+User} $>$ \hyperlink{class_droi_user_a27da664e147073967fc9e59b31ca15cb}{login\+With\+Anonymous} (\hyperlink{class_droi_error}{Droi\+Error} $\ast$error)
+\item 
+static void \hyperlink{class_droi_user_acf4f563aca5705d83ede8fcaf2277c39}{set\+Auto\+Anonymouse\+User} (bool flag)
+\item 
+static bool \hyperlink{class_droi_user_a35e4e2e972597cfc491ce2d7ee758488}{is\+Auto\+Anonymous\+User\+Enabled} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_droi_user_a4c65f8b6629f95a05e4015663a0ba20a}\label{class_droi_user_a4c65f8b6629f95a05e4015663a0ba20a}} 
+class {\bfseries c\+J\+S\+O\+N\+Helper}
+\item 
+\mbox{\Hypertarget{class_droi_user_aba63ff5315e879e4b382bf84dcdcb3d1}\label{class_droi_user_aba63ff5315e879e4b382bf84dcdcb3d1}} 
+class {\bfseries Cloud\+Storage\+D\+B\+Helper}
+\item 
+\mbox{\Hypertarget{class_droi_user_abd7e01d03f382b5c2fb8595e789490ca}\label{class_droi_user_abd7e01d03f382b5c2fb8595e789490ca}} 
+class {\bfseries Cloud\+User\+Storage\+D\+B\+Helper}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_droi_user_a3bea249ce5f0c182784979297e36c492}\label{class_droi_user_a3bea249ce5f0c182784979297e36c492}} 
+\index{Droi\+User@{Droi\+User}!change\+Password@{change\+Password}}
+\index{change\+Password@{change\+Password}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{change\+Password()}{changePassword()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_error}{Droi\+Error} Droi\+User\+::change\+Password (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{old\+Password,  }\item[{const std\+::string}]{new\+Password }\end{DoxyParamCaption})}
+
+Reset user password 
+\begin{DoxyParams}{Parameters}
+{\em old\+Password} & Old password to be check again \\
+\hline
+{\em new\+Password} & New password to be set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_error}{Droi\+Error} object. Developer should use is\+Ok to check whether this result is OK. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a4a76d7e4ab2865f6ba2e01470091dca8}\label{class_droi_user_a4a76d7e4ab2865f6ba2e01470091dca8}} 
+\index{Droi\+User@{Droi\+User}!confirm\+Phone\+Number\+Pin\+Code@{confirm\+Phone\+Number\+Pin\+Code}}
+\index{confirm\+Phone\+Number\+Pin\+Code@{confirm\+Phone\+Number\+Pin\+Code}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{confirm\+Phone\+Number\+Pin\+Code()}{confirmPhoneNumberPinCode()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_error}{Droi\+Error} Droi\+User\+::confirm\+Phone\+Number\+Pin\+Code (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{pin\+Code }\end{DoxyParamCaption})}
+
+Confirm pin code sent to user phone.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+Code} & Pic code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_error}{Droi\+Error} object. Developer should use is\+Ok to check whether this result is OK. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a74b3c07a144ae1c916c4d3636c5a4959}\label{class_droi_user_a74b3c07a144ae1c916c4d3636c5a4959}} 
+\index{Droi\+User@{Droi\+User}!create@{create}}
+\index{create@{create}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_user}{Droi\+User} $\ast$ Droi\+User\+::create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Constructor a \hyperlink{class_droi_user}{Droi\+User} object. \begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_user}{Droi\+User} instance 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_ae2f95d9b44530fe46358b8ac584d844f}\label{class_droi_user_ae2f95d9b44530fe46358b8ac584d844f}} 
+\index{Droi\+User@{Droi\+User}!enabled@{enabled}}
+\index{enabled@{enabled}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{enabled()}{enabled()}}
+{\footnotesize\ttfamily bool Droi\+User\+::enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get is\+Enabled state. \begin{DoxyReturn}{Returns}
+true if it\textquotesingle{}s enabled. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a43acc04ec54f82a3bf2c0ea013245f82}\label{class_droi_user_a43acc04ec54f82a3bf2c0ea013245f82}} 
+\index{Droi\+User@{Droi\+User}!get\+Current\+User@{get\+Current\+User}}
+\index{get\+Current\+User@{get\+Current\+User}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{get\+Current\+User()}{getCurrentUser()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_user}{Droi\+User} $\ast$ Droi\+User\+::get\+Current\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get cuurent login user. \begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_user}{Droi\+User} instance 
+\end{DoxyReturn}
+
+
+Referenced by login(), login\+With\+Anonymous(), and signup().
+
+\mbox{\Hypertarget{class_droi_user_a13d2714ae33f6064da1448736e78ea02}\label{class_droi_user_a13d2714ae33f6064da1448736e78ea02}} 
+\index{Droi\+User@{Droi\+User}!get\+Email@{get\+Email}}
+\index{get\+Email@{get\+Email}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{get\+Email()}{getEmail()}}
+{\footnotesize\ttfamily std\+::string Droi\+User\+::get\+Email (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get user email. \begin{DoxyReturn}{Returns}
+User email. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a346b687624c9b1df80de63e39799e5d1}\label{class_droi_user_a346b687624c9b1df80de63e39799e5d1}} 
+\index{Droi\+User@{Droi\+User}!get\+Phone\+Number@{get\+Phone\+Number}}
+\index{get\+Phone\+Number@{get\+Phone\+Number}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{get\+Phone\+Number()}{getPhoneNumber()}}
+{\footnotesize\ttfamily std\+::string Droi\+User\+::get\+Phone\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get user phone number. \begin{DoxyReturn}{Returns}
+User phone number. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a08f406ceef3b33e5a8f8e37c60cdfde3}\label{class_droi_user_a08f406ceef3b33e5a8f8e37c60cdfde3}} 
+\index{Droi\+User@{Droi\+User}!get\+Session\+Token@{get\+Session\+Token}}
+\index{get\+Session\+Token@{get\+Session\+Token}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{get\+Session\+Token()}{getSessionToken()}}
+{\footnotesize\ttfamily std\+::string Droi\+User\+::get\+Session\+Token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get user phone number. \begin{DoxyReturn}{Returns}
+User phone number. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a95d13af36734958546e656b6f1f19ddd}\label{class_droi_user_a95d13af36734958546e656b6f1f19ddd}} 
+\index{Droi\+User@{Droi\+User}!get\+User\+Id@{get\+User\+Id}}
+\index{get\+User\+Id@{get\+User\+Id}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{get\+User\+Id()}{getUserId()}}
+{\footnotesize\ttfamily std\+::string Droi\+User\+::get\+User\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get user id. \begin{DoxyReturn}{Returns}
+User id. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a3997fd724988f04f0ec7c346340e2ac5}\label{class_droi_user_a3997fd724988f04f0ec7c346340e2ac5}} 
+\index{Droi\+User@{Droi\+User}!is\+Anonymouse\+User@{is\+Anonymouse\+User}}
+\index{is\+Anonymouse\+User@{is\+Anonymouse\+User}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{is\+Anonymouse\+User()}{isAnonymouseUser()}}
+{\footnotesize\ttfamily bool Droi\+User\+::is\+Anonymouse\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The user is anonymous. \begin{DoxyReturn}{Returns}
+true for anonlymous user. 
+\end{DoxyReturn}
+
+
+Referenced by signup().
+
+\mbox{\Hypertarget{class_droi_user_a35e4e2e972597cfc491ce2d7ee758488}\label{class_droi_user_a35e4e2e972597cfc491ce2d7ee758488}} 
+\index{Droi\+User@{Droi\+User}!is\+Auto\+Anonymous\+User\+Enabled@{is\+Auto\+Anonymous\+User\+Enabled}}
+\index{is\+Auto\+Anonymous\+User\+Enabled@{is\+Auto\+Anonymous\+User\+Enabled}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{is\+Auto\+Anonymous\+User\+Enabled()}{isAutoAnonymousUserEnabled()}}
+{\footnotesize\ttfamily bool Droi\+User\+::is\+Auto\+Anonymous\+User\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get Auto\+Anonymous\+User\+Enable state. \begin{DoxyReturn}{Returns}
+true to enable. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_aa45e722831198f051f635f8d9abe8da3}\label{class_droi_user_aa45e722831198f051f635f8d9abe8da3}} 
+\index{Droi\+User@{Droi\+User}!is\+Email\+Verified@{is\+Email\+Verified}}
+\index{is\+Email\+Verified@{is\+Email\+Verified}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{is\+Email\+Verified()}{isEmailVerified()}}
+{\footnotesize\ttfamily bool Droi\+User\+::is\+Email\+Verified (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Email field has been verified or not.
+
+\begin{DoxyReturn}{Returns}
+true to Email\+Verified is true or false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a28a2d6c0c0f07833da4584beb47ab01f}\label{class_droi_user_a28a2d6c0c0f07833da4584beb47ab01f}} 
+\index{Droi\+User@{Droi\+User}!is\+Logged\+In@{is\+Logged\+In}}
+\index{is\+Logged\+In@{is\+Logged\+In}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{is\+Logged\+In()}{isLoggedIn()}}
+{\footnotesize\ttfamily bool Droi\+User\+::is\+Logged\+In (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The user login state. \begin{DoxyReturn}{Returns}
+true to login successfully and not expired. 
+\end{DoxyReturn}
+
+
+References Droi\+Date\+Time\+::is\+Valid\+I\+S\+O8601\+String().
+
+
+
+Referenced by signup().
+
+\mbox{\Hypertarget{class_droi_user_a0d62ee68696b5e09200fcd4f8826bcb0}\label{class_droi_user_a0d62ee68696b5e09200fcd4f8826bcb0}} 
+\index{Droi\+User@{Droi\+User}!is\+Phone\+Num\+Verified@{is\+Phone\+Num\+Verified}}
+\index{is\+Phone\+Num\+Verified@{is\+Phone\+Num\+Verified}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{is\+Phone\+Num\+Verified()}{isPhoneNumVerified()}}
+{\footnotesize\ttfamily bool Droi\+User\+::is\+Phone\+Num\+Verified (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Phon\+Num field has been verified or not.
+
+\begin{DoxyReturn}{Returns}
+true to Phone\+Num\+Verified is true or false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a673787980cbb072df89cdf72239e7984}\label{class_droi_user_a673787980cbb072df89cdf72239e7984}} 
+\index{Droi\+User@{Droi\+User}!login@{login}}
+\index{login@{login}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily Ref\+Ptr$<$ \hyperlink{class_droi_user}{Droi\+User} $>$ Droi\+User\+::login (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{user\+Id,  }\item[{const std\+::string \&}]{password,  }\item[{\hyperlink{class_droi_error}{Droi\+Error} $\ast$}]{error }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Login user with User\+ID and Password 
+\begin{DoxyParams}{Parameters}
+{\em user\+Id} & User\+Id \\
+\hline
+{\em password} & Password \\
+\hline
+{\em error} & Pass \hyperlink{class_droi_error}{Droi\+Error} to get error code. Pass null to ignore error details. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_user}{Droi\+User} instance. 
+\end{DoxyReturn}
+
+
+References get\+Current\+User(), and Droi\+Core\+::get\+Installation\+Id().
+
+\mbox{\Hypertarget{class_droi_user_a27da664e147073967fc9e59b31ca15cb}\label{class_droi_user_a27da664e147073967fc9e59b31ca15cb}} 
+\index{Droi\+User@{Droi\+User}!login\+With\+Anonymous@{login\+With\+Anonymous}}
+\index{login\+With\+Anonymous@{login\+With\+Anonymous}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{login\+With\+Anonymous()}{loginWithAnonymous()}}
+{\footnotesize\ttfamily Ref\+Ptr$<$ \hyperlink{class_droi_user}{Droi\+User} $>$ Droi\+User\+::login\+With\+Anonymous (\begin{DoxyParamCaption}\item[{\hyperlink{class_droi_error}{Droi\+Error} $\ast$}]{error }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Login user with anonymous type. 
+\begin{DoxyParams}{Parameters}
+{\em error} & Pass \hyperlink{class_droi_error}{Droi\+Error} to get error code. Pass null to ignore error details. \\
+\hline
+\end{DoxyParams}
+
+
+References get\+Current\+User(), Droi\+Permission\+::get\+Default\+Permission(), Droi\+Core\+::get\+Device\+Id(), Droi\+Core\+::get\+Installation\+Id(), Droi\+Object\+::set\+Permission(), Droi\+Permission\+::set\+Public\+Read\+Permission(), and Droi\+Permission\+::set\+Public\+Write\+Permission().
+
+\mbox{\Hypertarget{class_droi_user_a14a693a064e644ecda56e61f107315c9}\label{class_droi_user_a14a693a064e644ecda56e61f107315c9}} 
+\index{Droi\+User@{Droi\+User}!logout@{logout}}
+\index{logout@{logout}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{logout()}{logout()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_error}{Droi\+Error} Droi\+User\+::logout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Logout current user. The logout is block action and need network connected. \begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_error}{Droi\+Error} object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_ae0b35cc0d9e35a415ce203d909857861}\label{class_droi_user_ae0b35cc0d9e35a415ce203d909857861}} 
+\index{Droi\+User@{Droi\+User}!refresh\+Validation\+Status@{refresh\+Validation\+Status}}
+\index{refresh\+Validation\+Status@{refresh\+Validation\+Status}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{refresh\+Validation\+Status()}{refreshValidationStatus()}}
+{\footnotesize\ttfamily bool Droi\+User\+::refresh\+Validation\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Refersh Email\+Verified / Phone\+Num\+Verified field status. After refreshed, check verification via is\+Email\+Verified or is\+Phone\+Num\+Verified.
+
+\begin{DoxyReturn}{Returns}
+true to successfully refreshed. 
+\end{DoxyReturn}
+
+
+References Droi\+Task\+Dispatcher\+::current\+Task\+Dispatcher(), Droi\+Task\+Dispatcher\+::enqueue\+Task(), Droi\+Task\+Dispatcher\+::get\+Task\+Dispatcher(), Droi\+Object\+::get\+Value(), Droi\+Query\+::query\+Data(), Droi\+Query\+::run\+Query(), and Droi\+Query\+::where().
+
+\mbox{\Hypertarget{class_droi_user_a54b508fdf1684d5f143b7fa1884dc03c}\label{class_droi_user_a54b508fdf1684d5f143b7fa1884dc03c}} 
+\index{Droi\+User@{Droi\+User}!refresh\+Validation\+Status\+In\+Background@{refresh\+Validation\+Status\+In\+Background}}
+\index{refresh\+Validation\+Status\+In\+Background@{refresh\+Validation\+Status\+In\+Background}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{refresh\+Validation\+Status\+In\+Background()}{refreshValidationStatusInBackground()}}
+{\footnotesize\ttfamily bool Droi\+User\+::refresh\+Validation\+Status\+In\+Background (\begin{DoxyParamCaption}\item[{\hyperlink{struct_droi_callback}{Droi\+Callback}$<$ Ref\+Ptr$<$ \hyperlink{class_droi_user}{Droi\+User} $>$$>$\+::on\+Callback2}]{callback }\end{DoxyParamCaption})}
+
+Refersh Email\+Verified / Phone\+Num\+Verified field status in the background thread. After refreshed, check verification via is\+Email\+Verified or is\+Phone\+Num\+Verified.
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Callback \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true to successfully push to background task to execute. 
+\end{DoxyReturn}
+
+
+References Droi\+Task\+Dispatcher\+::current\+Task\+Dispatcher(), Droi\+Task\+Dispatcher\+::enqueue\+Task(), and Droi\+Task\+Dispatcher\+::get\+Task\+Dispatcher().
+
+\mbox{\Hypertarget{class_droi_user_acf4f563aca5705d83ede8fcaf2277c39}\label{class_droi_user_acf4f563aca5705d83ede8fcaf2277c39}} 
+\index{Droi\+User@{Droi\+User}!set\+Auto\+Anonymouse\+User@{set\+Auto\+Anonymouse\+User}}
+\index{set\+Auto\+Anonymouse\+User@{set\+Auto\+Anonymouse\+User}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{set\+Auto\+Anonymouse\+User()}{setAutoAnonymouseUser()}}
+{\footnotesize\ttfamily void Droi\+User\+::set\+Auto\+Anonymouse\+User (\begin{DoxyParamCaption}\item[{bool}]{flag }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+To save data to cloud, the action must send with valid login user. Will auto login with anonymous user if not login before when saving data. 
+\begin{DoxyParams}{Parameters}
+{\em flag} & true to enable. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_user_a20e7019a45e75a54fb117feacb000f33}\label{class_droi_user_a20e7019a45e75a54fb117feacb000f33}} 
+\index{Droi\+User@{Droi\+User}!set\+Email@{set\+Email}}
+\index{set\+Email@{set\+Email}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{set\+Email()}{setEmail()}}
+{\footnotesize\ttfamily void Droi\+User\+::set\+Email (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{email }\end{DoxyParamCaption})}
+
+Set user email. 
+\begin{DoxyParams}{Parameters}
+{\em email} & User email. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_user_ad4142478f0499ff7eefbba8a7654efce}\label{class_droi_user_ad4142478f0499ff7eefbba8a7654efce}} 
+\index{Droi\+User@{Droi\+User}!set\+Enabled@{set\+Enabled}}
+\index{set\+Enabled@{set\+Enabled}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{set\+Enabled()}{setEnabled()}}
+{\footnotesize\ttfamily void Droi\+User\+::set\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{enabled }\end{DoxyParamCaption})}
+
+Set enable state 
+\begin{DoxyParams}{Parameters}
+{\em flag} & true to enable. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_user_afdc2427b453225d6bc014a5a2bb69086}\label{class_droi_user_afdc2427b453225d6bc014a5a2bb69086}} 
+\index{Droi\+User@{Droi\+User}!set\+Password@{set\+Password}}
+\index{set\+Password@{set\+Password}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{set\+Password()}{setPassword()}}
+{\footnotesize\ttfamily void Droi\+User\+::set\+Password (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})}
+
+Set user password. The password is for user signup. 
+\begin{DoxyParams}{Parameters}
+{\em password} & User password. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_user_a3b208995b25dc47e72d1fa25b5a0845c}\label{class_droi_user_a3b208995b25dc47e72d1fa25b5a0845c}} 
+\index{Droi\+User@{Droi\+User}!set\+Phone\+Number@{set\+Phone\+Number}}
+\index{set\+Phone\+Number@{set\+Phone\+Number}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{set\+Phone\+Number()}{setPhoneNumber()}}
+{\footnotesize\ttfamily void Droi\+User\+::set\+Phone\+Number (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{phone\+Number }\end{DoxyParamCaption})}
+
+Set user phone number. 
+\begin{DoxyParams}{Parameters}
+{\em phone\+Num} & User phone number. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_user_a84f5d57a02e5c7c77ea534787653bbb9}\label{class_droi_user_a84f5d57a02e5c7c77ea534787653bbb9}} 
+\index{Droi\+User@{Droi\+User}!set\+User\+Id@{set\+User\+Id}}
+\index{set\+User\+Id@{set\+User\+Id}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{set\+User\+Id()}{setUserId()}}
+{\footnotesize\ttfamily void Droi\+User\+::set\+User\+Id (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{user\+Id }\end{DoxyParamCaption})}
+
+Set user id. The id is for user signup. 
+\begin{DoxyParams}{Parameters}
+{\em user\+Id} & User id \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_droi_user_ae26c7f0f576a663d3ce3c5bfc03a102b}\label{class_droi_user_ae26c7f0f576a663d3ce3c5bfc03a102b}} 
+\index{Droi\+User@{Droi\+User}!signup@{signup}}
+\index{signup@{signup}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{signup()}{signup()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_error}{Droi\+Error} Droi\+User\+::signup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Signup new user. The \hyperlink{}{set\+User\+Id(\+String)} and \hyperlink{}{set\+Password(\+String)} must set before calling signup. \begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_error}{Droi\+Error} object. 
+\end{DoxyReturn}
+
+
+References get\+Current\+User(), Droi\+Core\+::get\+Device\+Id(), Droi\+Core\+::get\+Installation\+Id(), is\+Anonymouse\+User(), is\+Logged\+In(), and Droi\+Object\+::set\+Value().
+
+\mbox{\Hypertarget{class_droi_user_a1c908092717de36c51b0561546fc76b1}\label{class_droi_user_a1c908092717de36c51b0561546fc76b1}} 
+\index{Droi\+User@{Droi\+User}!validate\+Email@{validate\+Email}}
+\index{validate\+Email@{validate\+Email}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{validate\+Email()}{validateEmail()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_error}{Droi\+Error} Droi\+User\+::validate\+Email (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Validate user email.
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_error}{Droi\+Error} object. Developer should use is\+Ok to check whether this result is OK. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_user_a771f0ed19004d3565fdc6b7663d0a566}\label{class_droi_user_a771f0ed19004d3565fdc6b7663d0a566}} 
+\index{Droi\+User@{Droi\+User}!validate\+Phone\+Number@{validate\+Phone\+Number}}
+\index{validate\+Phone\+Number@{validate\+Phone\+Number}!Droi\+User@{Droi\+User}}
+\subsubsection{\texorpdfstring{validate\+Phone\+Number()}{validatePhoneNumber()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_error}{Droi\+Error} Droi\+User\+::validate\+Phone\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Validate user phone number.
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_error}{Droi\+Error} \hyperlink{class_droi_error}{Droi\+Error} object. Developer should use is\+Ok to check whether this result is OK. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Droi\+User.\+h\item 
+Droi\+User.\+cpp\end{DoxyCompactItemize}

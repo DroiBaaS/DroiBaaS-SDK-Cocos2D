@@ -1,0 +1,230 @@
+\hypertarget{class_droi_task_dispatcher}{}\section{Droi\+Task\+Dispatcher Class Reference}
+\label{class_droi_task_dispatcher}\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+D\+R\+O\+I\+T\+A\+S\+K\+ID \hyperlink{class_droi_task_dispatcher_a2ba8675d058bbe2e65306381de60030b}{enqueue\+Task} (const D\+R\+O\+I\+T\+A\+SK \&task)
+\item 
+D\+R\+O\+I\+T\+A\+S\+K\+ID \hyperlink{class_droi_task_dispatcher_abe9f9b40bc6bf45b6cbfd4c77477bbd8}{enqueue\+Task} (const D\+R\+O\+I\+T\+A\+SK \&task, int delay\+In\+Millisecond)
+\item 
+D\+R\+O\+I\+T\+A\+S\+K\+ID \hyperlink{class_droi_task_dispatcher_aa46d3152580896756a09212f84132a41}{enqueue\+Task} (const std\+::string \&task\+Name, const D\+R\+O\+I\+T\+A\+SK \&task)
+\item 
+D\+R\+O\+I\+T\+A\+S\+K\+ID \hyperlink{class_droi_task_dispatcher_a1de6e0f3acc8defb136a1e6cd0b28b50}{enqueue\+Task} (const std\+::string \&task\+Name, const D\+R\+O\+I\+T\+A\+SK \&task, int delay\+In\+Millisecond)
+\item 
+D\+R\+O\+I\+T\+A\+S\+K\+ID \hyperlink{class_droi_task_dispatcher_ab6758842dd6472ccd8681117c703f656}{enqueue\+Timer\+Task} (const D\+R\+O\+I\+T\+A\+SK \&task, int interval\+In\+Millisecond, bool run\+Once)
+\item 
+D\+R\+O\+I\+T\+A\+S\+K\+ID \hyperlink{class_droi_task_dispatcher_a425fe3f3013d1ad01e59dfe6155b5ffa}{enqueue\+Timer\+Task} (const std\+::string \&task\+Name, const D\+R\+O\+I\+T\+A\+SK \&task, int interval\+In\+Millisecond, bool run\+Once)
+\item 
+bool \hyperlink{class_droi_task_dispatcher_a00ead6235c3452e2fe41e1f2ebac9a5b}{kill\+Task} (D\+R\+O\+I\+T\+A\+S\+K\+ID task\+Id)
+\item 
+void \hyperlink{class_droi_task_dispatcher_a678e5ab213ca9da9ff9436aaabddb258}{destroy} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} \& \hyperlink{class_droi_task_dispatcher_ae21fccf452591c290b429f3417350857}{get\+Task\+Dispatcher} (const std\+::string \&dispatcher\+Name)
+\item 
+static \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} $\ast$ \hyperlink{class_droi_task_dispatcher_ade17a036d0f01db63f8fab82b53136d6}{current\+Task\+Dispatcher} ()
+\item 
+static D\+R\+O\+I\+T\+A\+S\+K\+ID \hyperlink{class_droi_task_dispatcher_aa535e2418acecf3b6f26772f3b1a0091}{task\+Id\+By\+Name} (const std\+::string \&task\+Name)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_droi_task_dispatcher_ade17a036d0f01db63f8fab82b53136d6}\label{class_droi_task_dispatcher_ade17a036d0f01db63f8fab82b53136d6}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!current\+Task\+Dispatcher@{current\+Task\+Dispatcher}}
+\index{current\+Task\+Dispatcher@{current\+Task\+Dispatcher}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{current\+Task\+Dispatcher()}{currentTaskDispatcher()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} $\ast$ Droi\+Task\+Dispatcher\+::current\+Task\+Dispatcher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} object of current thread \begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} instance 
+\end{DoxyReturn}
+
+
+References get\+Task\+Dispatcher().
+
+
+
+Referenced by Droi\+Query\+::offset(), Droi\+User\+::refresh\+Validation\+Status(), Droi\+User\+::refresh\+Validation\+Status\+In\+Background(), Droi\+Query\+::run\+In\+Background(), Droi\+Query\+::run\+Query\+In\+Background(), and Droi\+Object\+::save\+In\+Background().
+
+\mbox{\Hypertarget{class_droi_task_dispatcher_a678e5ab213ca9da9ff9436aaabddb258}\label{class_droi_task_dispatcher_a678e5ab213ca9da9ff9436aaabddb258}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!destroy@{destroy}}
+\index{destroy@{destroy}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{destroy()}{destroy()}}
+{\footnotesize\ttfamily void Droi\+Task\+Dispatcher\+::destroy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Destroy \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} object \mbox{\Hypertarget{class_droi_task_dispatcher_a2ba8675d058bbe2e65306381de60030b}\label{class_droi_task_dispatcher_a2ba8675d058bbe2e65306381de60030b}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!enqueue\+Task@{enqueue\+Task}}
+\index{enqueue\+Task@{enqueue\+Task}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{enqueue\+Task()}{enqueueTask()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily D\+R\+O\+I\+T\+A\+S\+K\+ID Droi\+Task\+Dispatcher\+::enqueue\+Task (\begin{DoxyParamCaption}\item[{const D\+R\+O\+I\+T\+A\+SK \&}]{task }\end{DoxyParamCaption})}
+
+Enqueue a task into \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} 
+\begin{DoxyParams}{Parameters}
+{\em task} & The task that will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The id of enqueued task 
+\end{DoxyReturn}
+
+
+Referenced by enqueue\+Task(), Droi\+Query\+::offset(), Droi\+User\+::refresh\+Validation\+Status(), Droi\+User\+::refresh\+Validation\+Status\+In\+Background(), Droi\+Query\+::run\+In\+Background(), Droi\+Query\+::run\+Query\+In\+Background(), and Droi\+Object\+::save\+In\+Background().
+
+\mbox{\Hypertarget{class_droi_task_dispatcher_abe9f9b40bc6bf45b6cbfd4c77477bbd8}\label{class_droi_task_dispatcher_abe9f9b40bc6bf45b6cbfd4c77477bbd8}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!enqueue\+Task@{enqueue\+Task}}
+\index{enqueue\+Task@{enqueue\+Task}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{enqueue\+Task()}{enqueueTask()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily D\+R\+O\+I\+T\+A\+S\+K\+ID Droi\+Task\+Dispatcher\+::enqueue\+Task (\begin{DoxyParamCaption}\item[{const D\+R\+O\+I\+T\+A\+SK \&}]{task,  }\item[{int}]{delay\+In\+Millisecond }\end{DoxyParamCaption})}
+
+Enqueue a task into \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} 
+\begin{DoxyParams}{Parameters}
+{\em task} & The task that will be executed \\
+\hline
+{\em delay\+In\+Millisecond} & Delay in millisecond \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The id of enqueued task 
+\end{DoxyReturn}
+
+
+References enqueue\+Task().
+
+\mbox{\Hypertarget{class_droi_task_dispatcher_aa46d3152580896756a09212f84132a41}\label{class_droi_task_dispatcher_aa46d3152580896756a09212f84132a41}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!enqueue\+Task@{enqueue\+Task}}
+\index{enqueue\+Task@{enqueue\+Task}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{enqueue\+Task()}{enqueueTask()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily D\+R\+O\+I\+T\+A\+S\+K\+ID Droi\+Task\+Dispatcher\+::enqueue\+Task (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{task\+Name,  }\item[{const D\+R\+O\+I\+T\+A\+SK \&}]{task }\end{DoxyParamCaption})}
+
+Enqueue a task into \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} 
+\begin{DoxyParams}{Parameters}
+{\em task\+Name} & The specific task name \\
+\hline
+{\em task} & The task that will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The id of enqueued task 
+\end{DoxyReturn}
+
+
+References enqueue\+Task().
+
+\mbox{\Hypertarget{class_droi_task_dispatcher_a1de6e0f3acc8defb136a1e6cd0b28b50}\label{class_droi_task_dispatcher_a1de6e0f3acc8defb136a1e6cd0b28b50}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!enqueue\+Task@{enqueue\+Task}}
+\index{enqueue\+Task@{enqueue\+Task}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{enqueue\+Task()}{enqueueTask()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily D\+R\+O\+I\+T\+A\+S\+K\+ID Droi\+Task\+Dispatcher\+::enqueue\+Task (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{task\+Name,  }\item[{const D\+R\+O\+I\+T\+A\+SK \&}]{task,  }\item[{int}]{delay\+In\+Millisecond }\end{DoxyParamCaption})}
+
+Enqueue a task into \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} 
+\begin{DoxyParams}{Parameters}
+{\em task\+Name} & The specific task name \\
+\hline
+{\em task} & The task that will be executed \\
+\hline
+{\em delay\+In\+Millisecond} & Delay in millisecond \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The id of enqueued task 
+\end{DoxyReturn}
+
+
+References enqueue\+Timer\+Task().
+
+\mbox{\Hypertarget{class_droi_task_dispatcher_ab6758842dd6472ccd8681117c703f656}\label{class_droi_task_dispatcher_ab6758842dd6472ccd8681117c703f656}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!enqueue\+Timer\+Task@{enqueue\+Timer\+Task}}
+\index{enqueue\+Timer\+Task@{enqueue\+Timer\+Task}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{enqueue\+Timer\+Task()}{enqueueTimerTask()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily D\+R\+O\+I\+T\+A\+S\+K\+ID Droi\+Task\+Dispatcher\+::enqueue\+Timer\+Task (\begin{DoxyParamCaption}\item[{const D\+R\+O\+I\+T\+A\+SK \&}]{task,  }\item[{int}]{interval\+In\+Millisecond,  }\item[{bool}]{run\+Once }\end{DoxyParamCaption})}
+
+Enqueue a timer task into \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} 
+\begin{DoxyParams}{Parameters}
+{\em task} & The task that will be executed \\
+\hline
+{\em interval\+In\+Millisecond} & The interval in millisecond \\
+\hline
+{\em run\+Once} & Check whether this task is running once \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The id of enqueued task 
+\end{DoxyReturn}
+
+
+Referenced by enqueue\+Task().
+
+\mbox{\Hypertarget{class_droi_task_dispatcher_a425fe3f3013d1ad01e59dfe6155b5ffa}\label{class_droi_task_dispatcher_a425fe3f3013d1ad01e59dfe6155b5ffa}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!enqueue\+Timer\+Task@{enqueue\+Timer\+Task}}
+\index{enqueue\+Timer\+Task@{enqueue\+Timer\+Task}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{enqueue\+Timer\+Task()}{enqueueTimerTask()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily D\+R\+O\+I\+T\+A\+S\+K\+ID Droi\+Task\+Dispatcher\+::enqueue\+Timer\+Task (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{task\+Name,  }\item[{const D\+R\+O\+I\+T\+A\+SK \&}]{task,  }\item[{int}]{interval\+In\+Millisecond,  }\item[{bool}]{run\+Once }\end{DoxyParamCaption})}
+
+Enqueue a timer task into \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} 
+\begin{DoxyParams}{Parameters}
+{\em task\+Name} & The specific task name \\
+\hline
+{\em task} & The task that will be executed \\
+\hline
+{\em interval\+In\+Millisecond} & The interval in millisecond \\
+\hline
+{\em run\+Once} & Check whether this task is running once \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The id of enqueued task 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_task_dispatcher_ae21fccf452591c290b429f3417350857}\label{class_droi_task_dispatcher_ae21fccf452591c290b429f3417350857}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!get\+Task\+Dispatcher@{get\+Task\+Dispatcher}}
+\index{get\+Task\+Dispatcher@{get\+Task\+Dispatcher}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{get\+Task\+Dispatcher()}{getTaskDispatcher()}}
+{\footnotesize\ttfamily \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} \& Droi\+Task\+Dispatcher\+::get\+Task\+Dispatcher (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dispatcher\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get the specific \hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} object by dispatcher\+Name 
+\begin{DoxyParams}{Parameters}
+{\em dispatcher\+Name} & The dispatcher name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_droi_task_dispatcher}{Droi\+Task\+Dispatcher} instance 
+\end{DoxyReturn}
+
+
+Referenced by current\+Task\+Dispatcher(), Droi\+Query\+::offset(), Droi\+User\+::refresh\+Validation\+Status(), Droi\+User\+::refresh\+Validation\+Status\+In\+Background(), Droi\+Query\+::run\+In\+Background(), Droi\+Query\+::run\+Query\+In\+Background(), and Droi\+Object\+::save\+In\+Background().
+
+\mbox{\Hypertarget{class_droi_task_dispatcher_a00ead6235c3452e2fe41e1f2ebac9a5b}\label{class_droi_task_dispatcher_a00ead6235c3452e2fe41e1f2ebac9a5b}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!kill\+Task@{kill\+Task}}
+\index{kill\+Task@{kill\+Task}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{kill\+Task()}{killTask()}}
+{\footnotesize\ttfamily bool Droi\+Task\+Dispatcher\+::kill\+Task (\begin{DoxyParamCaption}\item[{D\+R\+O\+I\+T\+A\+S\+K\+ID}]{task\+Id }\end{DoxyParamCaption})}
+
+Kill the specific task 
+\begin{DoxyParams}{Parameters}
+{\em task\+Id} & The specific task id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true -\/ succeeded; Otherwise is false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_droi_task_dispatcher_aa535e2418acecf3b6f26772f3b1a0091}\label{class_droi_task_dispatcher_aa535e2418acecf3b6f26772f3b1a0091}} 
+\index{Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}!task\+Id\+By\+Name@{task\+Id\+By\+Name}}
+\index{task\+Id\+By\+Name@{task\+Id\+By\+Name}!Droi\+Task\+Dispatcher@{Droi\+Task\+Dispatcher}}
+\subsubsection{\texorpdfstring{task\+Id\+By\+Name()}{taskIdByName()}}
+{\footnotesize\ttfamily D\+R\+O\+I\+T\+A\+S\+K\+ID Droi\+Task\+Dispatcher\+::task\+Id\+By\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{task\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get task id by name 
+\begin{DoxyParams}{Parameters}
+{\em task\+Name} & the name of task \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The id of task by task\+Name 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Droi\+Task\+Dispatcher.\+h\item 
+Droi\+Task\+Dispatcher.\+cpp\end{DoxyCompactItemize}
