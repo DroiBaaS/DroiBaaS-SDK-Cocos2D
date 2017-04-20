@@ -6,6 +6,7 @@
 
 #ifndef DroiRESTfulAPIDefinition_h
 #define DroiRESTfulAPIDefinition_h
+#include <string>
 
 class DroiRESTfulAPIDefinition
 {

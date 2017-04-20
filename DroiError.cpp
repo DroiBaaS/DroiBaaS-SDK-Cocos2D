@@ -4,6 +4,7 @@
  */
 
 #include "DroiError.h"
+#include "RefValue.h"
 
 DroiErrorCode DroiError::getCode() const
 {

@@ -9,7 +9,24 @@
 #include <base/CCMap.h>
 #include <base/CCVector.h>
 #include <base/CCRef.h>
+#include <base/CCRefPtr.h>
 #include <string>
+#include <sstream>
+#include <thread> 
+#include <condition_variable>
+
+#if __ANDROID__
+namespace std {
+template <typename T>
+std::string to_string(T value)
+{
+    std::ostringstream os ;
+    os << value ;
+    return os.str() ;
+}
+}
+#endif
+
 using namespace cocos2d;
 
 typedef cocos2d::Vector< cocos2d::Ref* > DroiRefVector;

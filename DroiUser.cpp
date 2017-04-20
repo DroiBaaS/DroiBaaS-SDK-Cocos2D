@@ -3,6 +3,7 @@
  * All rights reserved.
  */
 
+#include <base/CCUserDefault.h>
 #include "DroiUser.h"
 #include "DroiCore.h"
 #include "DroiError.h"
@@ -12,6 +13,7 @@
 #include "DroiDefinition.h"
 #include "DroiHelper.h"
 
+using namespace std;
 #define KEY_ANONYMOUS "anonymous"
 #define KEY_SESSION "session"
 
@@ -31,14 +33,18 @@ DroiUser* DroiUser::create()
     return user;
 }
 
+//
 DroiUser* DroiUser::getCurrentUser()
 {
-    if ( g_currentUser != nullptr )
-        return g_currentUser;
+    if ( g_currentUser != nullptr ) {
+        DroiUser*  tmp = g_currentUser.get();
+        tmp->retain();
+        return tmp;
+    }
 
     // Try to load user from data/data.
     g_currentUser = DroiUser::loadFromFile();
-    return g_currentUser.get();
+    return g_currentUser;
 }
 
 DroiUser* DroiUser::login( const std::string& userId, const std::string& password, DroiError* error )
@@ -49,10 +55,11 @@ DroiUser* DroiUser::login( const std::string& userId, const std::string& passwor
         return nullptr;
     }
 
-    DroiUser* user = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> user = DroiUser::getCurrentUser();
     if (user != nullptr && user->isLoggedIn() && !user->isAnonymouseUser()) {
         if (error != nullptr)
             *error = DroiError::createDroiError( DROICODE_ERROR,"", "Another user had logged in. Please logout first");
+            	
         return nullptr;
     }
 
@@ -141,6 +148,9 @@ DroiError DroiUser::signup()
             needToCHPWD = true;
             this->setValue("AuthData", *authData);
         }
+
+        if (authData->empty())
+            this->eraseValue("AuthData");
     }
 
     if (this->isLoggedIn() == false) {
@@ -204,8 +214,6 @@ DroiUser* DroiUser::createAnonymouseUser()
     authData->insert( KEY_ANONYMOUS, RefPtrAutoReleaser<RefValue>(new RefValue(Value("1"))));
     user->setValue( "AuthData", *authData );
     user->setValue( "UserId", installationId + deviceId );
-    if (g_currentUser != nullptr)
-        g_currentUser->release();
     g_currentUser = user;
     return user;
 }
@@ -223,6 +231,8 @@ DroiUser* DroiUser::loginWithAnonymous( DroiError* err )
     if ( user != nullptr && user->isLoggedIn() && !user->isAnonymouseUser() ) {
         if ( err != nullptr )
             *err = DroiError::createDroiError( DROICODE_ERROR, "", "Another user had logged in. Please logout first.");
+        if ( user != nullptr )
+            user->release();
         return nullptr;
     }
     
@@ -260,7 +270,7 @@ DroiError DroiUser::loginAnonymousInternal()
         mSession.insert(std::make_pair("Token", *(loginOut->getToken())));
         mSession.insert(std::make_pair("ExpireAt", *(loginOut->getExpire())));
     } else {
-        DroiUser* user = DroiUser::createAnonymouseUser();
+        RefPtrAutoReleaser<DroiUser> user = DroiUser::createAnonymouseUser();
         RefPtrAutoReleaser<DroiSignUpBody> signBody = DroiSignUpBody::bodyFromType(KEY_ANONYMOUS, user);
         RefPtrAutoReleaser<DroiSignUpOutput> signOut = DroiRemoteServiceHelper::signUp(signBody, &e);
 
@@ -327,10 +337,6 @@ void DroiUser::storeUser(DroiUser *user)
     cJSON_Delete(jsonObject);
 
     UserDefault::getInstance()->setStringForKey("DROI_CUR_USER", rawText);
-    if (g_currentUser.get() != user) {
-        if (g_currentUser != nullptr)
-            g_currentUser->release();
-    }
     g_currentUser = user;
 }
 
@@ -340,8 +346,10 @@ DroiUser* DroiUser::loadFromFile()
     DroiUser* user = new DroiUser;
     UserDefault* setting = UserDefault::getInstance();
     std::string rawText = setting->getStringForKey("DROI_CUR_USER");
-    if (rawText.size() == 0)
+    if (rawText.size() == 0) {
+        user->release();
         return nullptr;
+    }
 
     RefPtrAutoReleaser<RefMap> userDict = cJSONHelper::fromJSON(rawText);
     RefMap::const_iterator iter = userDict->find("user");
@@ -355,8 +363,10 @@ DroiUser* DroiUser::loadFromFile()
         session = (RefMap*)iter->second;
 
     cJSON* json = cJSON_Parse( userRawText.c_str() );
-    if ( json == NULL )
+    if ( json == NULL ) {
+        user->release();
         return nullptr;
+    }
     RefPtrAutoReleaser<DroiObject> dObject = cJSONHelper::fromJSON( json );
     user->copyFromUser(dObject);
     user->mSession.insert(std::make_pair("Token", *(RefValue*)session->at("Token")));

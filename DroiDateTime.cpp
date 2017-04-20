@@ -7,7 +7,11 @@
 
 #ifdef WINDOWS
 #define timegm _mkgmtime
+#elif __ANDROID__
+#include <time64.h>
+#define timegm timegm64
 #endif
+
 
 std::chrono::milliseconds DroiDateTime::now()
 {

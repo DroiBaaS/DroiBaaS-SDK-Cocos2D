@@ -8,6 +8,7 @@
 #include <functional>
 #include <algorithm>
 #include <base/CCDirector.h>
+#include <base/CCScheduler.h>
 const char* DroiMainThreadName = "DroiMainThreadName";
 const char* DroiBackgroundThreadName = "DroiBackgroundThreadName";
 const char* DroiTaskBackgroundThread = "DroiTaskBackgroundThread";
