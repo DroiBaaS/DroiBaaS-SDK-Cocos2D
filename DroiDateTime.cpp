@@ -44,11 +44,12 @@ DroiDateTime::DroiDateTime(const char* iso8601String)
 std::string DroiDateTime::toISO8601String( time_t tm )
 {
     struct tm * ptm;
-    char buf[sizeof "2016-02-27T15:08:00Z"];
+    char buf[sizeof "2016-02-27T15:08:00.000Z"+8];
 
     // Get localtime
     ptm = gmtime ( &tm );  // localtime to UTC
     strftime( buf, sizeof buf, "%FT%TZ", ptm);
+    
     // this will work too, if your compiler doesn't support %F or %T:
     //strftime(buf, sizeof buf, "%Y-%m-%dT%H:%M:%SZ", gmtime(&now));
     
@@ -60,7 +61,7 @@ const std::string DroiDateTime::toISO8601String( std::chrono::milliseconds ms)
     std::chrono::seconds s = std::chrono::duration_cast<std::chrono::seconds>(ms);
     time_t tt = s.count();
     
-    char buf[sizeof "2016-02-27T15:08:00"];
+    char buf[sizeof "2016-02-27T15:08:00.000Z"+8];
     struct tm* ptm = gmtime ( &tt );  // localtime to UTC
     strftime( buf, sizeof buf, "%FT%T", ptm);
     // this will work too, if your compiler doesn't support %F or %T:
