@@ -113,13 +113,13 @@ class DroiRestfulOutput : public Ref
 public:
     static DroiRestfulOutput* fromJson(const std::string& jsonString);
     RefValue* getCode();
-    RefValue* getResult();
+    RefMap* getResult();
     RefValue* getTicket();
     
 private:
     RefPtr<RefValue> code;
     RefPtr<RefValue> ticket;
-    RefPtr<RefValue> result;
+    RefPtr<RefMap> result;
     
 };
 
@@ -145,6 +145,7 @@ class DroiRemoteServiceHelper
 
 public:
     static std::string callServer(const std::string& service, cocos2d::network::HttpRequest::Type method, Ref* payload, DroiError* err);
+    static std::string callServer(const std::string& service, cocos2d::network::HttpRequest::Type method, Ref* payload, RefMap* additionalHeaders,  DroiError* err);
     static DroiError translateResponseError(DroiHttpResponse* resp);
     static void appendDefaultHeaderToRequest(DroiHttpRequest* request);
     static DroiSignUpOutput* signUp(DroiSignUpBody* body, DroiError* err);

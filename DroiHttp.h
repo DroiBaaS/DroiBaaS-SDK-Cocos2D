@@ -17,6 +17,7 @@
 #include "DroiCore.h"
 
 #define DROI_KEY_APP_ID "X-Droi-AppID"
+#define DROI_KEY_API_KEY "X-Droi-Api-Key"
 #define DROI_KEY_PLATFORM_ID "X-Droi-Platform-Key"
 #define DROI_KEY_DEVICE_ID "X-Droi-DeviceID"
 #define DROI_SESSION_TOKEN "X-Droi-Session-Token"

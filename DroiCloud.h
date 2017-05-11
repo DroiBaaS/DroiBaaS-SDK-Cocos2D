@@ -15,67 +15,70 @@
 class DroiCloud
 {
 public:
-    template <typename T, typename V> static RefPtr<V> callCloudService( const std::string& name, RefPtr<T> parameter, DroiError* err = nullptr ) {
-        static_assert(std::is_base_of<DroiObject, T>::value, "T must inherit from DroiObject");
-        static_assert(std::is_base_of<DroiObject, V>::value, "V must inherit from DroiObject");
+    template static string callRestfulApi( const std::string& apiKey, const std::string& apiPath, cocos2d::network::HttpRequest::Type apiMethod, const std::string& parameter, DroiError* err = nullptr ) {
         RefPtr<DroiUser> currentUser = DroiUser::getCurrentUser();
         DroiError error;
-        if ( currentUser->isAutoAnonymousUserEnabled() && !currentUser->isAuthorizedUser() ) {
+        if ( currentUser->isAutoAnonymousUserEnabled() && currentUser->isLoggedIn() ) {
             currentUser = DroiUser::loginWithAnonymous(&error);
             if ( error.isOk() == false ) {
                 if ( err != nullptr )
                     *err = error;
-                return nullptr;
+                return "";
             }
         }
         
-        cJSON* jsonObject = cJSONHelper::toJSON( dynamic_cast<DroiObject*>(parameter) );
-        char* resJson = cJSON_PrintUnformatted( jsonObject );
-        std::string json = resJson;
-        free(resJson);
-        cJSON_Delete( jsonObject );
+        RefPtrAutoReleaser<RefMap> headers = new RefMap();
+        headers->insert(DROI_KEY_API_KEY, new RefValue(Value(apiKey)));
+        RefPtrAutoReleaser<RefValue> payload = new RefValue(Value(parameter));
+        RefPtrAutoReleaser<DroiRestfulOutput> output  = DroiRestfulOutput::fromJson(DroiRemoteServiceHelper::callServer(apiPath, apiMethod, payload, headers, &error));
 
-        // TODO:
-        std::string res;
-//        NSData* res = [DroiRemoteServiceHelper callServer:[NSString stringWithFormat:@"%@/%@", DroiRESTfulAPIDefinition_CLOUDCODEROOT, name] withJsonData:inputData error:&err];
-        if ( !error.isOk() ) {
+        if (!error.isOk()) {
             if ( err != nullptr )
                 *err = error;
-            return nullptr;
+            return "";
+        }
+
+        DroiErrorCode code = DROICODE_OK;
+        std::string appendMsg = "";
+        if (output.get()->getCode()->asInt() != 0) {
+            code = (DroiErrorCode) output.get()->getCode()->asInt();
+        }
+
+        std::string ticket;
+        if (output->getTicket() != nullptr) {
+            ticket = output->getTicket()->asString();
+        }
+
+        if (err != nullptr) {
+            *err = DroiError::createDroiError(code, ticket, appendMsg);
+        }
+
+        RefMap* result = output->getResult();
+        std::string data;
+        if (result != nullptr) {
+            cJSON* jsondata = cJSONHelper::toJSONMap(result);
+            if (jsondata != nullptr) {
+                char* res = cJSON_PrintUnformatted(jsondata);
+                data = res;
+                free(res);
+                cJSON_Delete(jsondata);
+            }
         }
         
-        //
-        RefPtrAutoReleaser<RefMap> jsonDict = cJSONHelper::fromJSON( res );
-        int code = (dynamic_cast<RefValue*>(jsonDict->at( "Code" ))->asInt());
-        std::string ticket = (dynamic_cast<RefValue*>(jsonDict->at( "Ticket" ))->asString());
-        if ( code == 0 ) {
-            RefPtr<V> resultDict = dynamic_cast<V*>( jsonDict->at("Result") );
-            if ( resultDict == nullptr ) {
-                if ( err != nullptr ) {
-                    error = DroiError::createDroiError( DROICODE_ERROR, "" );
-                    *err = error;
-                }
-            }
-            return resultDict;
-        }
-        return nullptr;
-  
+        return data;
     }
     
-    template <typename T, typename V> static bool callCloudServiceInBackground( const std::string& name, RefPtr<T> parameter, DroiCallback<V>::onCallback2 callback ) {
-        static_assert(std::is_base_of<DroiObject, T>::value, "T must inherit from DroiObject");
-        static_assert(std::is_base_of<DroiObject, V>::value, "V must inherit from DroiObject");
-
+    template static bool callCloudServiceInBackground( const std::string& apiKey, const std::string& apiPath, cocos2d::network::HttpRequest::Type apiMethod, const std::string& parameter, DroiCallback<std::string>::onCallback2 callback ) {
         // DroiTaskBackgroundThread
         DroiTaskDispatcher& td = DroiTaskDispatcher::getTaskDispatcher( DroiTaskBackgroundThread );
         DroiTaskDispatcher* currentTD = DroiTaskDispatcher::currentTaskDispatcher();
         
-        td.enqueueTask([name, parameter, callback, currentTD] {
+        td.enqueueTask([apiKey, apiPath, apiMethod, parameter, callback, currentTD] {
             DroiError err;
-            RefPtr<V> res = callCloudService( name, parameter, err );
+            std::string res = callRestfulApi( apiKey, apiPath, apiMethod, parameter, &err);
             
             if ( callback != nullptr ) {
-                currentTD->enqueueTask([err, callback] {
+                currentTD->enqueueTask([res, err, callback] {
                     callback( res, err );
                 });
             }

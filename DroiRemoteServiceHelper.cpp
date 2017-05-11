@@ -308,8 +308,8 @@ DroiRestfulOutput* DroiRestfulOutput::fromJson(const std::string& jsonString)
     } else {
         it = jsonMap->find("Result");
         if ( it != jsonMap->end())
-            if (dynamic_cast<RefValue*>(it->second) != nullptr)
-                output->result = dynamic_cast<RefValue* >(it->second);
+            if (dynamic_cast<RefMap*>(it->second) != nullptr)
+                output->result = dynamic_cast<RefMap* >(it->second);
     }
     
     return output;
@@ -326,13 +326,12 @@ RefValue* DroiRestfulOutput::getTicket()
     return ticket;
 }
 
-RefValue* DroiRestfulOutput::getResult()
+RefMap* DroiRestfulOutput::getResult()
 {
     return result;
 }
 
-
-std::string DroiRemoteServiceHelper::callServer(const std::string& service,  cocos2d::network::HttpRequest::Type method, Ref* payload, DroiError* err)
+std::string DroiRemoteServiceHelper::callServer(const std::string& service,  cocos2d::network::HttpRequest::Type method, Ref* payload, RefMap* additionalHeaders, DroiError* err)
 {
     DroiHttp* droihttp = DroiHttp::instance();
     cJSON* jsondata = nullptr;
@@ -353,16 +352,31 @@ std::string DroiRemoteServiceHelper::callServer(const std::string& service,  coc
         free(res);
         cJSON_Delete(jsondata);
     }
-    
-    RefPtrAutoReleaser<DroiHttpRequest> httpRequest = DroiHttpRequest::requestWithService(tmp, data, method);
-    DroiRemoteServiceHelper::appendDefaultHeaderToRequest(httpRequest);
-    RefPtrAutoReleaser<DroiHttpResponse> resp = droihttp->sendRequest(httpRequest, err);
 
+    RefPtrAutoReleaser<DroiHttpRequest> httpRequest = DroiHttpRequest::requestWithService(tmp, data, method);
+    //Add additional headers
+    DroiRemoteServiceHelper::appendDefaultHeaderToRequest(httpRequest);
+    if (additionalHeaders != nullptr) {
+        RefMap::const_iterator iter = additionalHeaders->begin();
+        for (; iter != additionalHeaders->end(); ++iter ) {
+            Ref* pValue = iter->second;
+            if ( dynamic_cast<RefValue*>(pValue) != NULL ) {
+                RefValue* val = dynamic_cast<RefValue*>(pValue);
+                httpRequest->addHeader(iter->first, val->asString());
+            }
+        }
+    }
+
+    RefPtrAutoReleaser<DroiHttpResponse> resp = droihttp->sendRequest(httpRequest, err);
     DroiError error = DroiRemoteServiceHelper::translateResponseError(resp);
     if (err != nullptr) *err = error;
 
-    string res = resp->getData();
-    return res;
+    return resp->getData();
+}
+
+std::string DroiRemoteServiceHelper::callServer(const std::string& service,  cocos2d::network::HttpRequest::Type method, Ref* payload, DroiError* err)
+{
+    return callServer(service, method, payload, nullptr, err);
 }
 
 DroiError DroiRemoteServiceHelper::translateResponseError(DroiHttpResponse* response)

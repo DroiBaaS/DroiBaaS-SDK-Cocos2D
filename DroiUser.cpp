@@ -58,7 +58,7 @@ DroiUser* DroiUser::login( const std::string& userId, const std::string& passwor
     RefPtrAutoReleaser<DroiUser> user = DroiUser::getCurrentUser();
     if (user != nullptr && user->isLoggedIn() && !user->isAnonymouseUser()) {
         if (error != nullptr)
-            *error = DroiError::createDroiError( DROICODE_ERROR,"", "Another user had logged in. Please logout first");
+            *error = DroiError::createDroiError( DROICODE_ALREADY_LOGIN_A_USER,"", "Another user had logged in. Please logout first");
             	
         return nullptr;
     }
@@ -230,7 +230,7 @@ DroiUser* DroiUser::loginWithAnonymous( DroiError* err )
     DroiUser* user = DroiUser::getCurrentUser();
     if ( user != nullptr && user->isLoggedIn() && !user->isAnonymouseUser() ) {
         if ( err != nullptr )
-            *err = DroiError::createDroiError( DROICODE_ERROR, "", "Another user had logged in. Please logout first.");
+            *err = DroiError::createDroiError( DROICODE_ALREADY_LOGIN_A_USER, "", "Another user had logged in. Please logout first.");
         if ( user != nullptr )
             user->release();
         return nullptr;
@@ -537,11 +537,11 @@ DroiError DroiUser::changePassword( const std::string& oldPassword, const std::s
 DroiError DroiUser::validateEmail()
 {
     if ( !(this->isLoggedIn()) || this->isAnonymouseUser()) {
-        return DroiError::createDroiError( DROICODE_ERROR, "", "User is not authorized or anonymous.");
+        return DroiError::createDroiError( DROICODE_USER_FUNC_NOT_ALLOWED, "", "User is not authorized or anonymous.");
     } else if (this->_EmailVerified) {
-        return DroiError::createDroiError( DROICODE_ERROR, "", "The email had verified.");
+        return DroiError::createDroiError( DROICODE_USER_CONTACT_HAD_VERIFIED, "", "The email had verified.");
     } else if (this->getEmail().length() == 0) {
-        return DroiError::createDroiError( DROICODE_ERROR, "", "Email is empty.");
+        return DroiError::createDroiError( DROICODE_USER_CONTACT_IS_EMPTY, "", "Email is empty.");
     }
 
     DroiError err;
@@ -569,11 +569,11 @@ DroiError DroiUser::validateEmail()
 DroiError DroiUser::validatePhoneNumber()
 {
     if ( !(this->isLoggedIn()) || this->isAnonymouseUser()) {
-        return DroiError::createDroiError( DROICODE_ERROR, "", "User is not authorized or anonymous.");
+        return DroiError::createDroiError( DROICODE_USER_FUNC_NOT_ALLOWED, "", "User is not authorized or anonymous.");
     } else if (this->_PhoneNumVerified) {
-        return DroiError::createDroiError( DROICODE_ERROR, "", "The phone number had verified.");
+        return DroiError::createDroiError( DROICODE_USER_CONTACT_HAD_VERIFIED, "", "The phone number had verified.");
     } else if (this->getEmail().length() == 0) {
-        return DroiError::createDroiError( DROICODE_ERROR, "", "PhoneNum is empty.");
+        return DroiError::createDroiError( DROICODE_USER_CONTACT_IS_EMPTY, "", "PhoneNum is empty.");
     }
 
     DroiError err;
@@ -600,11 +600,11 @@ DroiError DroiUser::validatePhoneNumber()
 DroiError DroiUser::confirmPhoneNumberPinCode( const std::string& pinCode)
 {
     if ( !(this->isLoggedIn()) || this->isAnonymouseUser()) {
-        return DroiError::createDroiError( DROICODE_ERROR, "", "User is not authorized or anonymous.");
+        return DroiError::createDroiError( DROICODE_USER_FUNC_NOT_ALLOWED, "", "User is not authorized or anonymous.");
     } else if (this->_PhoneNumVerified) {
-        return DroiError::createDroiError( DROICODE_ERROR, "", "The phone number had verified.");
+        return DroiError::createDroiError( DROICODE_USER_CONTACT_HAD_VERIFIED, "", "The phone number had verified.");
     } else if (this->getEmail().length() == 0) {
-        return DroiError::createDroiError( DROICODE_ERROR, "", "PhoneNum is empty.");
+        return DroiError::createDroiError( DROICODE_USER_CONTACT_IS_EMPTY, "", "PhoneNum is empty.");
     }
 
     DroiError err;
