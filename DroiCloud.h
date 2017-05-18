@@ -11,6 +11,8 @@
 #include "cJSONHelper.h"
 #include "DroiTaskDispatcher.h"
 #include "RefValue.h"
+#include "DroiHttp.h"
+#include "DroiRemoteServiceHelper.h"
 
 class DroiCloud
 {
