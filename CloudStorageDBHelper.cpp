@@ -41,7 +41,7 @@ bool CloudStorageDBHelper::createTable( DroiObject* object, const std::string& c
 
 DroiError CloudStorageDBHelper::insert( DroiMultimap<Ref*>* commands )
 {
-    DroiUser* currentUser = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> currentUser = DroiUser::getCurrentUser();
     DroiError err = DroiError::createDroiError(DROICODE_OK, "");
     if ( DroiUser::isAutoAnonymousUserEnabled() && (currentUser == nullptr || !currentUser->isLoggedIn()) ) {
         currentUser = DroiUser::loginWithAnonymous(&err);
@@ -66,7 +66,7 @@ DroiError CloudStorageDBHelper::insert( DroiMultimap<Ref*>* commands )
 
 RefVector* CloudStorageDBHelper::query( DroiMultimap<Ref*>* commands, DroiError* error )
 {
-    RefPtr<DroiUser> currentUser = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> currentUser = DroiUser::getCurrentUser();
     DroiError err;
     if ( DroiUser::isAutoAnonymousUserEnabled() && (currentUser == nullptr || !currentUser->isLoggedIn()) ) {
         currentUser = DroiUser::loginWithAnonymous(&err);
@@ -139,7 +139,7 @@ RefVector* CloudStorageDBHelper::query( DroiMultimap<Ref*>* commands, DroiError*
 
 DroiError CloudStorageDBHelper::update( DroiMultimap<Ref*>* commands )
 {
-    RefPtr<DroiUser> currentUser = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> currentUser = DroiUser::getCurrentUser();
     DroiError err = DroiError::createDroiError(DROICODE_OK, "");
     if ( DroiUser::isAutoAnonymousUserEnabled() && (currentUser == nullptr || !currentUser->isLoggedIn()) ) {
         currentUser = DroiUser::loginWithAnonymous(&err);
@@ -165,7 +165,7 @@ DroiError CloudStorageDBHelper::update( DroiMultimap<Ref*>* commands )
 
 DroiError CloudStorageDBHelper::updateData( DroiMultimap<Ref*>* commands )
 {
-    RefPtr<DroiUser> currentUser = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> currentUser = DroiUser::getCurrentUser();
     DroiError err;
     if ( DroiUser::isAutoAnonymousUserEnabled() && (currentUser == nullptr || !currentUser->isLoggedIn()) ) {
         currentUser = DroiUser::loginWithAnonymous(&err);
@@ -292,7 +292,7 @@ DroiError CloudStorageDBHelper::deleteOp( DroiMultimap<Ref*>* commands )
 DroiError CloudStorageDBHelper::deleteInternal( DroiObject* obj, const std::string& tableName )
 {
 
-    RefPtr<DroiUser> currentUser = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> currentUser = DroiUser::getCurrentUser();
     DroiError err;
     if ( DroiUser::isAutoAnonymousUserEnabled() && (currentUser == nullptr || !currentUser->isLoggedIn()) ) {
         currentUser = DroiUser::loginWithAnonymous(&err);
@@ -326,7 +326,7 @@ DroiError CloudStorageDBHelper::deleteInternal( DroiObject* obj, const std::stri
 
 DroiError CloudStorageDBHelper::save( DroiObject* obj, const std::string& tableName, const std::string& op )
 {
-    RefPtr<DroiUser> currentUser = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> currentUser = DroiUser::getCurrentUser();
     if ( currentUser == nullptr || !currentUser->isLoggedIn() ) {
         return DroiError::createDroiError( DROICODE_ERROR, "", "Not active user login" );
     }

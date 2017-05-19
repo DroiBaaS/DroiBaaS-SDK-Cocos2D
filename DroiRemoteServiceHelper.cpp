@@ -407,7 +407,7 @@ void DroiRemoteServiceHelper::appendDefaultHeaderToRequest(DroiHttpRequest* requ
 {
     request->addHeader(DROI_KEY_APP_ID, DroiCore::getAppId());
     request->addHeader(DROI_KEY_DEVICE_ID, DroiCore::getDeviceId());
-    DroiUser* user = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> user = DroiUser::getCurrentUser();
     string token = "";
 
     if ( user != nullptr && user->isLoggedIn() )

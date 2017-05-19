@@ -17,10 +17,10 @@
 class DroiCloud
 {
 public:
-    template static string callRestfulApi( const std::string& apiKey, const std::string& apiPath, cocos2d::network::HttpRequest::Type apiMethod, const std::string& parameter, DroiError* err = nullptr ) {
-        RefPtr<DroiUser> currentUser = DroiUser::getCurrentUser();
+    static string callRestfulApi( const std::string& apiKey, const std::string& apiPath, cocos2d::network::HttpRequest::Type apiMethod, const std::string& parameter, DroiError* err = nullptr ) {
+        RefPtrAutoReleaser<DroiUser> currentUser = DroiUser::getCurrentUser();
         DroiError error;
-        if ( currentUser->isAutoAnonymousUserEnabled() && currentUser->isLoggedIn() ) {
+        if ( DroiUser::isAutoAnonymousUserEnabled() && (currentUser == nullptr || !currentUser->isLoggedIn()) ) {
             currentUser = DroiUser::loginWithAnonymous(&error);
             if ( error.isOk() == false ) {
                 if ( err != nullptr )
@@ -70,7 +70,7 @@ public:
         return data;
     }
     
-    template static bool callCloudServiceInBackground( const std::string& apiKey, const std::string& apiPath, cocos2d::network::HttpRequest::Type apiMethod, const std::string& parameter, DroiCallback<std::string>::onCallback2 callback ) {
+    static bool callCloudServiceInBackground( const std::string& apiKey, const std::string& apiPath, cocos2d::network::HttpRequest::Type apiMethod, const std::string& parameter, DroiCallback<std::string>::onCallback2 callback ) {
         // DroiTaskBackgroundThread
         DroiTaskDispatcher& td = DroiTaskDispatcher::getTaskDispatcher( DroiTaskBackgroundThread );
         DroiTaskDispatcher* currentTD = DroiTaskDispatcher::currentTaskDispatcher();

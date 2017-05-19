@@ -128,7 +128,7 @@ DroiError CloudUserStorageDBHelper::update( DroiMultimap<Ref*>* commands )
 
 DroiError CloudUserStorageDBHelper::updateData( DroiMultimap<Ref*>* commands )
 {
-    DroiUser* currentUser = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> currentUser = DroiUser::getCurrentUser();
     DroiError err;
     if ( DroiUser::isAutoAnonymousUserEnabled() && (currentUser == nullptr || !currentUser->isLoggedIn()) ) {
         currentUser = DroiUser::loginWithAnonymous(&err);

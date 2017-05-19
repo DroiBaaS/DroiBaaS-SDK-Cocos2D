@@ -103,6 +103,7 @@ DroiUser* DroiUser::login( const std::string& userId, const std::string& passwor
     user->mSession.insert(std::make_pair("ExpireAt", *(loginOut->getExpire())));
     DroiUser::storeUser(user);
     if (error != nullptr) *error = e;
+    user->retain();
 
     return user;
 }
@@ -132,7 +133,7 @@ DroiError DroiUser::signup()
         return DroiError::createDroiError( DROICODE_INVALID_PARAMETER, "", "Empty UserId or Password" );
     }
 
-    DroiUser* user = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> user = DroiUser::getCurrentUser();
     if (user != nullptr && user->isLoggedIn() && !user->isAnonymouseUser())
         return DroiError::createDroiError( DROICODE_ALREADY_LOGIN_A_USER, "Please logout current user first");
 
@@ -227,12 +228,10 @@ DroiUser* DroiUser::loginWithAnonymous( DroiError* err )
     if ( deviceId.empty() || installationId.empty() )
         return nullptr;
     
-    DroiUser* user = DroiUser::getCurrentUser();
+    RefPtrAutoReleaser<DroiUser> user = DroiUser::getCurrentUser();
     if ( user != nullptr && user->isLoggedIn() && !user->isAnonymouseUser() ) {
         if ( err != nullptr )
             *err = DroiError::createDroiError( DROICODE_ALREADY_LOGIN_A_USER, "", "Another user had logged in. Please logout first.");
-        if ( user != nullptr )
-            user->release();
         return nullptr;
     }
     
@@ -248,6 +247,7 @@ DroiUser* DroiUser::loginWithAnonymous( DroiError* err )
         return nullptr;
 
     DroiUser::storeUser( user );
+    user->retain();
     return user;
 }
 
@@ -380,7 +380,9 @@ void DroiUser::cleanUp()
 {
     UserDefault* userDefalt = UserDefault::getInstance();
     userDefalt->setStringForKey("DROI_CUR_USER", "");
-    g_currentUser = nullptr;
+    if (g_currentUser != nullptr) {
+        g_currentUser = nullptr;
+    }
 }
 
 void DroiUser::copyFromUser(DroiObject* user)
