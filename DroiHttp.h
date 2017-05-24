@@ -30,10 +30,12 @@ public:
     std::string getData();
     long getHttpCode();
     std::string getTicket();
+    std::string getHttpError();
 
 private:
     friend class DroiHttp;
     long _httpcode;
+    std::string _http_error;
     std::string _data;
     std::string _ticket;
     std::string tag;

@@ -97,7 +97,7 @@ RefVector* CloudStorageDBHelper::query( DroiMultimap<Ref*>* commands, DroiError*
     int offset = getOffsetLimit(commands, DroiQuery::OFFSET);
     int limit = getOffsetLimit(commands, DroiQuery::LIMIT);
     string queryString = combineQuery(where, order, offset, limit);
-    if (queryString.size() <= 0) {
+    if ( queryString.size() <= 0 ) {
         err = DroiError::createDroiError( DROICODE_ERROR, "make query fail.");
         if ( error != nullptr )
             *error = err;
@@ -106,6 +106,12 @@ RefVector* CloudStorageDBHelper::query( DroiMultimap<Ref*>* commands, DroiError*
 
     std::string url = DroiRESTfulAPIDefinition::CRUD + "/" + className + "?" + queryString;
     std::string res = DroiRemoteServiceHelper::callServer(string(url), cocos2d::network::HttpRequest::Type::GET, nullptr, &err);
+
+    if ( !err.isOk() ) {
+        if ( error != nullptr )
+            *error = err;
+        return nullptr;
+    }
 
     if ( !res.empty() ) {
         RefPtrAutoReleaser<RefMap> resultDict = cJSONHelper::fromJSON( res );
@@ -309,12 +315,12 @@ DroiError CloudStorageDBHelper::deleteInternal( DroiObject* obj, const std::stri
         RefPtrAutoReleaser<DroiObject> obj = translateResponse(res);
         int code = -1;
         obj->getValue(DROI_KEY_JSON_CODE, code);
-        if (code != 0) {
-            if (code == DROITOKENINVALID)
+        if ( code != 0 ) {
+            if ( code == DROITOKENINVALID )
                 DroiUser::cleanUp();
             std::string ticket;
             bool existed = obj->getValue(DROI_KEY_JSON_TICKET, ticket);
-            if (!existed) ticket = "";
+            if ( !existed ) ticket = "";
             err = DroiError::createDroiError( (DroiErrorCode) code, ticket, std::string("Delete fails, code: ").append(std::to_string(code)));
         } else {
             err = DroiError::createDroiError(DROICODE_OK, "", "");
@@ -333,23 +339,26 @@ DroiError CloudStorageDBHelper::save( DroiObject* obj, const std::string& tableN
 
     DroiError err;
     std::string objStr;
-    if(obj->toJson(objStr) == false) {
+    if ( obj->toJson(objStr) == false ) {
         return DroiError::createDroiError(DROICODE_ERROR, "", "Cannot conver target to Json string");
     }
     RefPtrAutoReleaser<RefValue> target = new RefValue(Value(objStr));
 
     std::string url = DroiRESTfulAPIDefinition::CRUD + "/" + tableName + "/" + obj->objectId();
     std::string res = DroiRemoteServiceHelper::callServer(string(url), cocos2d::network::HttpRequest::Type::PUT, target.get(), &err);
+
+    if ( !err.isOk() ) return err;
+
     if ( !res.empty() ) {
         RefPtrAutoReleaser<DroiObject> obj = translateResponse(res);
         int code = -1;
         obj->getValue(DROI_KEY_JSON_CODE, code);
-        if (code != 0) {
-            if (code == DROITOKENINVALID)
+        if ( code != 0 ) {
+            if ( code == DROITOKENINVALID )
                 DroiUser::cleanUp();
             std::string ticket;
             bool existed = obj->getValue(DROI_KEY_JSON_TICKET, ticket);
-            if (!existed) ticket = "";
+            if ( !existed ) ticket = "";
             err = DroiError::createDroiError( (DroiErrorCode) code, ticket, std::string("Save fails, code: ").append(std::to_string(code)));
         } else {
             err = DroiError::createDroiError(DROICODE_OK, "", "");
@@ -375,7 +384,7 @@ RefMap* CloudStorageDBHelper::travel(DroiCondition* cond)
         for ( ; iter != conditions->end(); ++iter) {
             if ( dynamic_cast<RefVector*>( *iter) != nullptr) {
                 values->pushBack(*iter);
-            } else if (dynamic_cast<DroiCondition*>(*iter) != nullptr) {
+            } else if ( dynamic_cast<DroiCondition*>(*iter) != nullptr ) {
                 RefPtrAutoReleaser<RefMap> input = travel(dynamic_cast<DroiCondition*>(*iter) );
                 values->pushBack( input );
             }
@@ -391,32 +400,28 @@ DroiObject* CloudStorageDBHelper::translateResponse(std::string res)
 {
     DroiObject* object = DroiObject::createObject("DROIRESTful");
     RefPtrAutoReleaser<RefMap> jsonMap = dynamic_cast<RefMap*>(cJSONHelper::fromJSON(res));
-//    if ( jsonMap == nullptr ) {
-//        CCLOG( "%s", res.c_str() );
-//        return nullptr;
-//    }
     RefValue* refCode = nullptr;
     RefValue* refTicket = nullptr;
     RefMap::const_iterator it = jsonMap->find(DROI_KEY_JSON_CODE);
     if ( it != jsonMap->end() ) {
-        if (dynamic_cast<RefValue*>(it->second) != nullptr) {
+        if ( dynamic_cast<RefValue*>(it->second) != nullptr ) {
             refCode = dynamic_cast<RefValue*>(it->second);
         }
     }
 
     it = jsonMap->find(DROI_KEY_JSON_TICKET);
     if ( it != jsonMap->end() ) {
-        if (dynamic_cast<RefValue*>(it->second) != nullptr) {
+        if ( dynamic_cast<RefValue*>(it->second) != nullptr ) {
             refTicket = dynamic_cast<RefValue*>(it->second);
         }
     }
 
     //TODO
     int code = -1;
-    if (refCode != nullptr)
+    if ( refCode != nullptr )
         code = refCode->asInt();
     object->setValue(DROI_KEY_JSON_CODE, code);
-    if (refTicket != nullptr)
+    if ( refTicket != nullptr )
         object->setValue(DROI_KEY_JSON_TICKET, refTicket->asString());
 
     return object;
@@ -424,18 +429,18 @@ DroiObject* CloudStorageDBHelper::translateResponse(std::string res)
 
 std::string CloudStorageDBHelper::generateWhere(DroiMultimap<Ref*>* commands ) {
     std::string data("");
-    if (!commands->containsKey(DroiQuery::WHERE))
+    if ( !commands->containsKey(DroiQuery::WHERE) )
         return data;
 
     Ref* element = getFirstElement(commands, DroiQuery::WHERE);
     DroiCondition* cond = getSingleCondition(&element);
 
-    if (cond != nullptr) {
+    if ( cond != nullptr ) {
         RefPtrAutoReleaser<RefMap> obj = new RefMap();
         std::string type = cond->getType();
         RefVector* conditions = cond->getValue();
 
-        if (type.compare(DroiQuery::COND) == 0) {
+        if ( type.compare(DroiQuery::COND) == 0 ) {
             RefVector* oriArgs = dynamic_cast<RefVector*>(conditions->at(0));
             RefPtrAutoReleaser<RefVector> args = convertArgumentsFormat( oriArgs );
             RefPtrAutoReleaser<RefMap> cond = new RefMap();
@@ -455,25 +460,25 @@ std::string CloudStorageDBHelper::generateWhere(DroiMultimap<Ref*>* commands ) {
 
 std::string CloudStorageDBHelper::generateOrder(DroiMultimap<Ref*>* commands ) {
     std::string data("");
-    if (!commands->containsKey(DroiQuery::ORDERBY))
+    if ( !commands->containsKey(DroiQuery::ORDERBY) )
         return data;
 
     RefVector* list = commands->getValue(DroiQuery::ORDERBY);
-    if (list == nullptr || list->size() < 1)
+    if ( list == nullptr || list->size() < 1 )
         return data;
 
     RefVector::iterator it = list->begin();
-    for (; it != list->end(); ++it) {
+    for ( ; it != list->end(); ++it ) {
         Ref* current = dynamic_cast<Ref*>(*it);
-        if (current == nullptr)
+        if ( current == nullptr )
             continue;
         DroiMapEntry<Ref*>* entry = nullptr;
 
-        if (dynamic_cast<DroiMapEntry<Ref*>*>(current) != nullptr)
+        if ( dynamic_cast<DroiMapEntry<Ref*>*>(current) != nullptr )
             entry = dynamic_cast<DroiMapEntry<Ref*>*>(current);
 
         RefValueVector* target = dynamic_cast<RefValueVector*>(entry->Value());
-        if (DroiQuery::DESC.compare(target->at(1).asString()) == 0)
+        if ( DroiQuery::DESC.compare(target->at(1).asString()) == 0 )
             data.append("-");
         data.append(target->at(0).asString());
         data.append(",");
@@ -486,17 +491,17 @@ std::string CloudStorageDBHelper::generateOrder(DroiMultimap<Ref*>* commands ) {
 
 int CloudStorageDBHelper::getOffsetLimit(DroiMultimap<Ref*>* commands, std::string keyName) {
     int res = 0;
-    if (!commands->containsKey(keyName))
+    if ( !commands->containsKey(keyName) )
         return res;
 
     Ref* element = getFirstElement(commands, keyName);
     RefValue* val = nullptr;
     DroiMapEntry<Ref*>* entry = nullptr;
 
-    if (dynamic_cast<DroiMapEntry<Ref*>*>(element) != nullptr)
+    if ( dynamic_cast<DroiMapEntry<Ref*>*>(element) != nullptr )
         entry = dynamic_cast<DroiMapEntry<Ref*>*>(element);
 
-    if (entry != nullptr && dynamic_cast<RefValue*>(entry->Value()) != nullptr)
+    if ( entry != nullptr && dynamic_cast<RefValue*>(entry->Value()) != nullptr )
         val = dynamic_cast<RefValue*>(entry->Value());
 
     res = val->asInt();
@@ -507,7 +512,7 @@ int CloudStorageDBHelper::getOffsetLimit(DroiMultimap<Ref*>* commands, std::stri
 
 Ref* CloudStorageDBHelper::getFirstElement(DroiMultimap<Ref*>* commands, std::string keyName) {
     RefVector* vec = commands->getValue(keyName);
-    if (vec->size() != 1)
+    if ( vec->size() != 1 )
         return nullptr;
 
     return vec->at(0);
@@ -517,10 +522,10 @@ DroiCondition* CloudStorageDBHelper::getSingleCondition(Ref** input) {
     DroiCondition* cond = nullptr;
     DroiMapEntry<Ref*>* entry = nullptr;
 
-    if (dynamic_cast<DroiMapEntry<Ref*>*>(*input) != nullptr)
+    if ( dynamic_cast<DroiMapEntry<Ref*>*>(*input) != nullptr )
         entry = dynamic_cast<DroiMapEntry<Ref*>*>(*input);
 
-    if (entry != nullptr && dynamic_cast<DroiCondition*>(entry->Value()) != nullptr)
+    if ( entry != nullptr && dynamic_cast<DroiCondition*>(entry->Value()) != nullptr )
         cond = dynamic_cast<DroiCondition*>(entry->Value());
 
     return cond;
@@ -529,11 +534,11 @@ DroiCondition* CloudStorageDBHelper::getSingleCondition(Ref** input) {
 
 RefVector* CloudStorageDBHelper::convertArgumentsFormat(RefVector* args ) {
     RefVector* newArgs = new RefVector(*args);
-    if (args->size() <= 2)
+    if ( args->size() <= 2 )
         return args;
 
     Ref* arg = args->at(2);
-    if ( dynamic_cast<DroiDateTime*>(arg) != nullptr) {
+    if ( dynamic_cast<DroiDateTime*>(arg) != nullptr ) {
         DroiDateTime* dt = dynamic_cast<DroiDateTime*>( args->at(2) );
         RefValue* tm = new RefValue( Value(dt->toISO8601String()) );
         newArgs->replace(2, tm);
@@ -544,16 +549,16 @@ RefVector* CloudStorageDBHelper::convertArgumentsFormat(RefVector* args ) {
 
 std::string CloudStorageDBHelper::combineQuery(std::string where, std::string order, int offset, int limit) {
     std::string sb("");
-    if (where.size() < 1 && order.size() < 1)
+    if ( where.size() < 1 && order.size() < 1 )
         return sb;
 
-    if (where.size() >= 1) {
+    if ( where.size() >= 1 ) {
         sb.append("where=");
         sb.append(DroiHelper::url_encode(where));
         sb.append(("&"));
     }
 
-    if (order.size() >= 1) {
+    if ( order.size() >= 1 ) {
         sb.append("order=");
         sb.append(DroiHelper::url_encode(order));
         sb.append("&");

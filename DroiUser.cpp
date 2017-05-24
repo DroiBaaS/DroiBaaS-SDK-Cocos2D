@@ -70,6 +70,7 @@ DroiUser* DroiUser::login( const std::string& userId, const std::string& passwor
     RefPtrAutoReleaser<DroiLoginOutput> loginOut = DroiRemoteServiceHelper::login(loginBody, &e);
     if (!e.isOk()) {
         if (error != nullptr) *error = e;
+        return nullptr;
     }
 
     if (!loginOut->isSuccessful()) {

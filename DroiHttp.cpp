@@ -24,6 +24,11 @@ long DroiHttpResponse::getHttpCode()
     return _httpcode;
 }
 
+std::string DroiHttpResponse::getHttpError()
+{
+    return _http_error;
+}
+
 std::string DroiHttpResponse::getTicket()
 {
     return _ticket;
@@ -90,6 +95,7 @@ void DroiHttp::initResponseCallbacks() {
         if (!response->isSucceed()) {
             log("response failed");
             log("error buffer: %s", response->getErrorBuffer());
+            res->_http_error = response->getErrorBuffer();
             std::unique_lock<std::mutex> lock(*res->locker);
             cond->notify_all();
             return;
@@ -200,6 +206,8 @@ void DroiHttp::requestImpl(DroiHttpRequest* req, DroiError* err)
 
 std::string deviceIdToString(long long high, long long low)
 {
+    if ( high == 0 && low == 0 )
+        return "";
     char tmp[36];
     sprintf(tmp, "%016llX%016llX", high, low);
     std::string res(tmp);
@@ -217,10 +225,13 @@ DeviceId DroiHttp::getDeviceId()
     std::string tmp(DroiCore::DroiEntry);
     tmp.append(DroiRESTfulAPIDefinition::REG_DEVICE);
     RefPtrAutoReleaser<DroiHttpRequest> request = DroiHttpRequest::requestWithService(tmp, "", cocos2d::network::HttpRequest::Type::GET);
-    
-    RefPtrAutoReleaser<DroiHttpResponse> resp = this->sendRequest(request, &err);
+    if ( request.get() == nullptr )
+        return "";
 
+    RefPtrAutoReleaser<DroiHttpResponse> resp = this->sendRequest(request, &err);
     RefPtrAutoReleaser<RefVector> map = cJSONHelper::fromJSONToVector(resp->getData());
+    if ( map.get() == nullptr || map->size() < 2 )
+        return "";
     long long high = atoll(dynamic_cast<RefValue*>(map->at(0))->asString().c_str());
     long long low = atoll(dynamic_cast<RefValue*>(map->at(1))->asString().c_str());
 

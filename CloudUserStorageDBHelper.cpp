@@ -77,6 +77,12 @@ RefVector* CloudUserStorageDBHelper::query( DroiMultimap<Ref*>* commands, DroiEr
     std::string url = ((tableName.compare("_User") == 0) ?  DroiRESTfulAPIDefinition::USERS : DroiRESTfulAPIDefinition::GROUPS) + "?" + queryString;
     std::string res = DroiRemoteServiceHelper::callServer(string(url), cocos2d::network::HttpRequest::Type::GET, nullptr, &err);
 
+    if ( !err.isOk() ) {
+        if (error != nullptr)
+            *error = err;
+        return nullptr;
+    }
+
     if ( !res.empty() ) {
         RefPtrAutoReleaser<RefMap> resultDict = cJSONHelper::fromJSON( res );
         if ( resultDict != nullptr ) {
@@ -289,6 +295,8 @@ DroiError CloudUserStorageDBHelper::save( DroiObject* obj, const std::string& ta
 
     std::string url = ((tableName.compare("_User") == 0) ?  DroiRESTfulAPIDefinition::USERS : DroiRESTfulAPIDefinition::GROUPS) + "/" + obj->objectId();
     std::string res = DroiRemoteServiceHelper::callServer(string(url), cocos2d::network::HttpRequest::Type::PUT, jsonObject.get(), &err);
+
+    if ( !err.isOk() ) return err;
 
     if ( !res.empty() ) {
         RefPtrAutoReleaser<DroiObject> obj = CloudStorageDBHelper::translateResponse(res);

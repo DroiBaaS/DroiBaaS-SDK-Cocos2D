@@ -232,6 +232,8 @@ RefValue* DroiLoginOutput::getExpire()
 
 bool DroiLoginOutput::isSuccessful()
 {
+    if ( expireIn.get() == nullptr )
+        return false;
     std::chrono::milliseconds expire(0);
     if (expireIn != nullptr)
         DroiDateTime::isValidISO8601String(expireIn->asString().c_str(), expire);
@@ -396,7 +398,7 @@ DroiError DroiRemoteServiceHelper::translateResponseError(DroiHttpResponse* resp
             errorCode = DroiErrorCode:: DROICODE_SERVICE_NOT_ALLOWED;
         } else {
             errorCode = DroiErrorCode::DROICODE_HTTP_SERVER_ERROR;
-            appendedMessage.append("HttpStatus ").append(std::to_string(httpCode));
+            appendedMessage.append("HttpStatus ").append(std::to_string(httpCode).append(", error buffer: ").append(response->getHttpError()));
         }
     }
 
@@ -430,8 +432,9 @@ DroiSignUpOutput* DroiRemoteServiceHelper::signUp(DroiSignUpBody* body, DroiErro
 DroiLoginOutput* DroiRemoteServiceHelper::login(DroiLoginBody* body, DroiError* err)
 {
     RefPtrAutoReleaser<RefMap> ref = body->toJson();
-    if (ref.get() == NULL) {
+    if (ref.get() == nullptr ) {
         if (err != nullptr) *err = DroiError::createDroiError(DROICODE_ERROR, "", "gen data fail.");
+        return nullptr;
     }
 
     return DroiLoginOutput::fromJson(DroiRemoteServiceHelper::callServer(DroiRESTfulAPIDefinition::USER_LOGIN, cocos2d::network::HttpRequest::Type::POST, ref, err));

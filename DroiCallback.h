@@ -6,6 +6,7 @@
 #ifndef DroiCallback_hpp
 #define DroiCallback_hpp
 #include "base/CCRef.h"
+#include "DroiError.h"
 #include <functional>
 
 template <typename T> struct DroiCallback {
